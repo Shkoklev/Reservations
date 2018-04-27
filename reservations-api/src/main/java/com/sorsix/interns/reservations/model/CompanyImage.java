@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 
 @Entity
-public class ImagePlace {
+public class CompanyImage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +17,7 @@ public class ImagePlace {
     @ManyToOne(optional = false)
     private Company company;
 
-    public ImagePlace() { }
+    public CompanyImage() { }
 
     public Company getCompany() {
         return company;

@@ -25,6 +25,9 @@ public class Company {
     @ManyToOne(optional = false)
     private Place place;
 
+    @OneToMany(mappedBy = "company")
+    private List<CompanyImage> images;
+
 
     public Place getPlace() {
         return place;
