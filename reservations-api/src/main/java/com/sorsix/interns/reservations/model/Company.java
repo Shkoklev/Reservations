@@ -28,6 +28,24 @@ public class Company {
     @OneToMany(mappedBy = "company")
     private List<CompanyImage> images;
 
+    @ManyToOne(optional = false)
+    private CompanyType companyType;
+
+    public List<CompanyImage> getImages() {
+        return images;
+    }
+
+    public void setImages(List<CompanyImage> images) {
+        this.images = images;
+    }
+
+    public CompanyType getCompanyType() {
+        return companyType;
+    }
+
+    public void setCompanyType(CompanyType companyType) {
+        this.companyType = companyType;
+    }
 
     public Place getPlace() {
         return place;
