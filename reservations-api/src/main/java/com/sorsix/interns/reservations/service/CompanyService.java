@@ -39,11 +39,11 @@ public class CompanyService {
     }
 
     public Company saveCompany(Company company){
-        return repository.save(company);
+        return companyRepository.save(company);
     }
 
     public List<Company> getCompanies(){
-        return repository.findAll();
+        return companyRepository.findAll();
     }
 
 }

@@ -14,18 +14,19 @@ public class CompanyController {
 
     private final CompanyService companyService;
     private final CompanyImageService companyImageService;
+
     public CompanyController(CompanyService companyService, CompanyImageService companyImageService) {
         this.companyService = companyService;
         this.companyImageService = companyImageService;
     }
 
     @PostMapping
-    public Company saveCompany(@RequestBody Company company){
-       return companyService.saveCompany(company);
+    public Company saveCompany(@RequestBody Company company) {
+        return companyService.saveCompany(company);
     }
 
-    @PostMapping("images")
-    public List<CompanyImage> saveImages(@RequestBody List<CompanyImage> images){
+    @PostMapping("/images")
+    public List<CompanyImage> saveImages(@RequestBody List<CompanyImage> images) {
         return companyImageService.saveImages(images);
     }
 
@@ -35,19 +36,20 @@ public class CompanyController {
         return companyService.getCompanies();
 
     }
+
     @GetMapping("/{companyType}")
     public List<Company> getCompaniesByType(@PathVariable String companyType) {
         return companyService.getCompaniesByType(companyType);
     }
 
-    @GetMapping
-    public Company getCompany(@RequestParam("id") Long id) {
+    @GetMapping("/id/{id}")
+    public Company getCompany(@PathVariable Long id) {
         System.out.println("hello");
         return companyService.getCompany(id).orElse(null);
     }
 
-    @GetMapping("/place")
-    public List<Company> getCompaniesByPlace(@RequestParam("placeId") Long placeId) {
-        return companyService.getCompaniesByPlace(placeId);
+    @GetMapping("/places/{id}")
+    public List<Company> getCompaniesByPlace(@PathVariable Long id) {
+        return companyService.getCompaniesByPlace(id);
     }
 }
