@@ -18,4 +18,8 @@ public class PlaceService {
     public List<Place> getPlaces() {
         return placeRepository.findAll();
     }
+
+    public Place savePlace(Place place){
+        return placeRepository.save(place);
+    }
 }

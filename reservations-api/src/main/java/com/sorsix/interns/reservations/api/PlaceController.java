@@ -2,9 +2,7 @@ package com.sorsix.interns.reservations.api;
 
 import com.sorsix.interns.reservations.model.Place;
 import com.sorsix.interns.reservations.service.PlaceService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +19,10 @@ public class PlaceController {
     @GetMapping
     public List<Place> getPlaces() {
         return placeService.getPlaces();
+    }
+
+    @PostMapping
+    public Place savePlace(@RequestBody Place place){
+        return placeService.savePlace(place);
     }
 }
