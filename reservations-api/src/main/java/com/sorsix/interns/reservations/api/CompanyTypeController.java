@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/types")
+@RequestMapping("/api/types")
 public class CompanyTypeController {
 
     private final CompanyTypeService companyTypeService;
@@ -21,7 +21,7 @@ public class CompanyTypeController {
     }
 
     @PostMapping
-    public CompanyType saveCompanyType(@RequestBody CompanyType companyType) {
+    public CompanyType saveCompanyType(@RequestBody CompanyType companyType){
         return companyTypeService.saveCompanyType(companyType);
     }
 
@@ -30,7 +30,6 @@ public class CompanyTypeController {
         return companyService.getCompanyTypes();
     }
 }
-
 
 
 

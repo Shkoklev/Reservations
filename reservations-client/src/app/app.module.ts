@@ -8,6 +8,9 @@ import { AdminComponent } from './pages/admin/admin.component';
 import {PlacesService} from './services/places.service';
 import {FormsModule} from '@angular/forms';
 import {CompanyTypesService} from './services/company-types.service';
+import {HttpClientModule} from '@angular/common/http';
+import { CompanyService } from './services/company.service';
+import { CompanyImageService } from './services/company-image.service';
 
 
 @NgModule({
@@ -18,11 +21,14 @@ import {CompanyTypesService} from './services/company-types.service';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     PlacesService,
-    CompanyTypesService
+    CompanyTypesService,
+    CompanyService,
+    CompanyImageService
   ],
   bootstrap: [AppComponent]
 })

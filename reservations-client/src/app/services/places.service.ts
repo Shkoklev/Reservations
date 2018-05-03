@@ -1,18 +1,17 @@
 import {Injectable} from '@angular/core';
 import {Place} from '../models/Place';
 import {Observable} from 'rxjs/Observable';
-import {of} from 'rxjs/observable/of';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class PlacesService {
 
-  private places: Place[] = [
-    {id: 1, name: 'Skopje'},
-    {id: 2, name: 'Kocani'},
-    {id: 3, name: 'Ohrid'}
-  ];
+  static apiUrl = '/api/places';
+
+  constructor(private http: HttpClient){
+  }
 
   getPlaces(): Observable<Place[]> {
-    return of(this.places);
+    return this.http.get<Place[]>(PlacesService.apiUrl);
   }
 }

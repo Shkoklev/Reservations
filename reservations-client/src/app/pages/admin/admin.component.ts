@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import {Place} from '../../models/Place';
 import {CompanyTypesService} from '../../services/company-types.service';
 import {CompanyType} from '../../models/CompanyType';
+import {CompanyService} from '../../services/company.service';
 
 @Component({
   selector: 'app-admin',
@@ -12,6 +13,10 @@ import {CompanyType} from '../../models/CompanyType';
 })
 export class AdminComponent implements OnInit {
 
+  name = '';
+  address = '';
+  description= '';
+  capacity = 0;
   places: Place[];
   selectedPlaceIndex = 0;
   companyTypes: CompanyType[];
@@ -20,7 +25,8 @@ export class AdminComponent implements OnInit {
   currentUrl = '';
   images = [];
 
-  constructor(private placesService: PlacesService, private companyTypesService: CompanyTypesService) { }
+  constructor(private placesService: PlacesService, private companyTypesService: CompanyTypesService,
+              private companyService: CompanyService) { }
 
   ngOnInit() {
     this.placesService.getPlaces()
@@ -35,7 +41,8 @@ export class AdminComponent implements OnInit {
   }
 
   onSubmit() {
-
+    this.companyService.saveCompany(this.name, this.address, this.description, this.capacity,
+      this.places[this.selectedPlaceIndex], this.companyTypes[this.selectedCompanyTypeIndex], this.images);
   }
 
 }

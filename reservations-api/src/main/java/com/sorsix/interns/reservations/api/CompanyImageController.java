@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/images")
+@RequestMapping("/api/images")
 public class CompanyImageController {
 
     private final CompanyImageService companyImageService;
@@ -18,7 +18,7 @@ public class CompanyImageController {
         this.companyImageService = companyImageService;
     }
 
-    @PostMapping("/save")
+    @PostMapping
     public List<CompanyImage> saveCompanyImages(List<CompanyImage> companyImages){
         return companyImageService.saveImages(companyImages);
     }
