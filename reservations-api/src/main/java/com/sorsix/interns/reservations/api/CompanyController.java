@@ -24,7 +24,6 @@ public class CompanyController {
     @GetMapping
     public List<Company> getCompanies() {
         return companyService.getCompanies();
-
     }
 
     @GetMapping("/{companyType}")
@@ -34,7 +33,6 @@ public class CompanyController {
 
     @GetMapping("/id/{id}")
     public Company getCompany(@PathVariable Long id) {
-        System.out.println("hello");
         return companyService.getCompany(id).orElse(null);
     }
 
