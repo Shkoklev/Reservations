@@ -1,49 +1,55 @@
 package com.sorsix.interns.reservations.service;
 
 import com.sorsix.interns.reservations.model.Company;
-import com.sorsix.interns.reservations.model.CompanyType;
 import com.sorsix.interns.reservations.repository.CompanyRepository;
-import com.sorsix.interns.reservations.repository.CompanyTypeRepository;
-import com.sorsix.interns.reservations.repository.PlaceRepository;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CompanyService {
 
-    private final CompanyRepository companyRepository;
-    private final CompanyTypeRepository companyTypeRepository;
+    private final CompanyRepository repository;
 
-    public CompanyService(CompanyRepository companyRepository,CompanyTypeRepository companyTypeRepository) {
-        this.companyRepository=companyRepository;
-        this.companyTypeRepository=companyTypeRepository;
+    public CompanyService(CompanyRepository repository) {
+        this.repository = repository;
     }
 
-    public List<Company> getCompaniesByType(String companyType) {
-        return companyRepository.getByCompanyType_Name(companyType);
+    public List<Company> getCompanies(String type, String place) {
+        if(type == null && place == null) {
+            return getAllCompanies();
+        }else if(type != null && place != null) {
+            return getCompaniesByTypeAndPlace(type, place);
+        }else if(type != null) {
+            return getCompaniesByType(type);
+        }else {
+            return getCompaniesByPlace(place);
+        }
+    }
+
+    public List<Company> getAllCompanies(){
+        return repository.findAll();
     }
 
     public Optional<Company> getCompany(Long id) {
-        return companyRepository.findById(id);
+        return repository.findById(id);
     }
 
-    public List<CompanyType> getCompanyTypes() {
-        return companyTypeRepository.findAll();
+    public List<Company> getCompaniesByType(String companyTypeName) {
+        return repository.findByCompanyType_Name(companyTypeName);
     }
 
-    public List<Company> getCompaniesByPlace(Long id) {
-        return companyRepository.getByPlaceId(id);
+    public List<Company> getCompaniesByPlace(String placeName) {
+        return repository.findByPlace_Name(placeName);
+    }
+
+    public List<Company> getCompaniesByTypeAndPlace(String companyTypeName, String placeName) {
+        return repository.findByCompanyType_NameAndPlace_Name(companyTypeName, placeName);
     }
 
     public Company saveCompany(Company company){
-        return companyRepository.save(company);
-    }
-
-    public List<Company> getCompanies(){
-        return companyRepository.findAll();
+        return repository.save(company);
     }
 
 }

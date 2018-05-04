@@ -10,7 +10,7 @@ import java.util.List;
 @RequestMapping("/api/places")
 public class PlaceController {
 
-    PlaceService placeService;
+    private final PlaceService placeService;
 
     public PlaceController(PlaceService placeService) {
         this.placeService = placeService;
@@ -22,7 +22,7 @@ public class PlaceController {
     }
 
     @PostMapping
-    public Place savePlace(@RequestBody Place place){
+    public Place savePlace(@RequestBody Place place) {
         return placeService.savePlace(place);
     }
 }

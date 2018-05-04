@@ -9,13 +9,17 @@ import java.util.List;
 @Service
 public class CompanyImageService {
 
-    private final CompanyImageRepository  companyImageRepository;
+    private final CompanyImageRepository repository;
 
-    public CompanyImageService(CompanyImageRepository companyImageRepository) {
-        this.companyImageRepository = companyImageRepository;
+    public CompanyImageService(CompanyImageRepository repository) {
+        this.repository = repository;
+    }
+
+    public List<CompanyImage> getImages() {
+        return repository.findAll();
     }
 
     public List<CompanyImage> saveImages(List<CompanyImage> images){
-        return companyImageRepository.saveAll(images);
+        return repository.saveAll(images);
     }
 }

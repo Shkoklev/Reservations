@@ -2,6 +2,7 @@ package com.sorsix.interns.reservations.api;
 
 import com.sorsix.interns.reservations.model.Company;
 import com.sorsix.interns.reservations.service.CompanyService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,22 +23,16 @@ public class CompanyController {
     }
 
     @GetMapping
-    public List<Company> getCompanies() {
-        return companyService.getCompanies();
+    public List<Company> getCompanies(@RequestParam(value = "type", required = false) String type,
+                                      @RequestParam(value = "place", required = false) String place) {
+        return companyService.getCompanies(type, place);
     }
 
-    @GetMapping("/{companyType}")
-    public List<Company> getCompaniesByType(@PathVariable String companyType) {
-        return companyService.getCompaniesByType(companyType);
+    @GetMapping("/{id}")
+    public ResponseEntity<Company> getCompany(@PathVariable Long id) {
+        return companyService.getCompany(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/id/{id}")
-    public Company getCompany(@PathVariable Long id) {
-        return companyService.getCompany(id).orElse(null);
-    }
-
-    @GetMapping("/places/{id}")
-    public List<Company> getCompaniesByPlace(@PathVariable Long id) {
-        return companyService.getCompaniesByPlace(id);
-    }
 }

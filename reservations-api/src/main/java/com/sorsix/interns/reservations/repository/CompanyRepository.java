@@ -9,6 +9,8 @@ import java.util.List;
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Long> {
 
-    List<Company> getByCompanyType_Name(String companyType);
-    List<Company> getByPlaceId(Long id);
+    List<Company> findByCompanyType_Name(String companyTypeName);
+    List<Company> findByPlace_Name(String placeName);
+    List<Company> findByCompanyType_NameAndPlace_Name(String companyTypeName, String placeName);
+
 }

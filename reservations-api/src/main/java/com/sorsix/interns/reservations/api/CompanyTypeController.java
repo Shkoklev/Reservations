@@ -12,12 +12,9 @@ import java.util.List;
 public class CompanyTypeController {
 
     private final CompanyTypeService companyTypeService;
-    private final CompanyService companyService;
 
-
-    public CompanyTypeController(CompanyTypeService companyTypeService, CompanyService companyService) {
+    public CompanyTypeController(CompanyTypeService companyTypeService) {
         this.companyTypeService = companyTypeService;
-        this.companyService = companyService;
     }
 
     @PostMapping
@@ -27,7 +24,7 @@ public class CompanyTypeController {
 
     @GetMapping
     public List<CompanyType> getCompanyTypes() {
-        return companyService.getCompanyTypes();
+        return companyTypeService.getCompanyTypes();
     }
 }
 
