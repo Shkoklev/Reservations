@@ -20,7 +20,7 @@ public class Reservation {
     private LocalDateTime timestamp;
 
     @ManyToOne(optional = false)
-    private Person person;
+    private User user;
 
     @ManyToOne(optional = false)
     private Company company;
@@ -57,12 +57,12 @@ public class Reservation {
         this.timestamp = timestamp;
     }
 
-    public Person getPerson() {
-        return person;
+    public User getUser() {
+        return user;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Company getCompany() {
