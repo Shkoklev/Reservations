@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
-import {Route, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {AdminComponent} from './pages/admin/admin.component';
+import {HeaderComponent} from './pages/header/header.component';
+import {HomeComponent} from './pages/home/home.component';
 
-const routes: Route[] = [
-  { path: 'admin', component: AdminComponent }
+export const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: 'admin', component: AdminComponent},
+  { path: 'home', component: HomeComponent}
 ];
 
 @NgModule({
