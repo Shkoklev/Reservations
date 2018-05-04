@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {Place} from '../models/Place';
 import {CompanyType} from '../models/CompanyType';
 import {Company} from '../models/Company';
-import {Observable} from 'rxjs/Observable';
 import {CompanyImageService} from './company-image.service';
 
 @Injectable()
