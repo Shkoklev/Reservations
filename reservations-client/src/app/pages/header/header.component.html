@@ -1,16 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-info">
-
-  <div class="collapse navbar-collapse">
-    <a routerLink="/home">
-      <img src="https://www.interiordesignerdecor.com/furniture/images/z3D-Bar-Table-1.png">
-    </a>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
     <ul class="nav navbar-nav">
-      <li *ngFor="let type of companyTypes">
-        <p  class="navigation-text">
-          {{type.name}}
-        </p>
-      </li>
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
     </ul>
   </div>
-
 </nav>

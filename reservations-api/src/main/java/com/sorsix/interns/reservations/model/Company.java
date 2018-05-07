@@ -18,7 +18,7 @@ public class Company {
     @Column(name = "address", nullable = false)
     private String address;
 
-    @Column(name = "description")
+    @Column(name = "description", length=1000)
     private String description;
 
     @Column(name = "capacity", nullable = false)
