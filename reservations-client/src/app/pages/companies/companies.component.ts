@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Company} from '../../models/Company';
+import {ActivatedRoute, Params} from '@angular/router';
+import {CompanyService} from '../../services/company.service';
 
 @Component({
   selector: 'app-companies',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompaniesComponent implements OnInit {
 
-  constructor() { }
+  companies: Company[];
+  typeName: String=null;
+  placeName: String=null;
+
+  constructor(private route: ActivatedRoute,private companyService: CompanyService) {
+    route.params.subscribe(val => {
+      this.typeName=this.route.snapshot.paramMap.get('type');
+      this.placeName=this.route.snapshot.paramMap.get('place');
+      this.companyService.getCompaniesByType(this.typeName)
+        .subscribe(response=>this.companies=response);
+    });
+  }
 
   ngOnInit() {
   }
+
 
 }

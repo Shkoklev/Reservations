@@ -3,6 +3,10 @@ img {
   height: 50px;
 }
 
-.navigation-text {
-  padding-left: 200px;
+.nav-link {
+  font-size: 19px;
+}
+
+select {
+   margin-right: 8px;
 }

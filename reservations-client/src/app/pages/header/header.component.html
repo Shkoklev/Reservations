@@ -1,13 +1,20 @@
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a routerLink="/home" class="navbar-brand">
+    <img src="https://www.interiordesignerdecor.com/furniture/images/z3D-Bar-Table-1.png">
+  </a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li *ngFor="let type of companyTypes" class="nav-item">
+        <a routerLink="/companies/{{type.name}}" class="nav-link">{{type.name}}</a>
+      </li>
     </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <select class="form-control form-control-sm" [(ngModel)]="selectedPlaceIndex" name="place" id="place">
+        <option [value]="-1">All</option>
+        <option *ngFor="let place of places; let i=index" [value]="i">{{place.name}}</option>
+      </select>
+      <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
+    </form>
   </div>
 </nav>

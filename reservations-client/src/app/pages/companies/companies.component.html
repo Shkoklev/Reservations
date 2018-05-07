@@ -1,3 +1,9 @@
-<p>
-  companies works!
-</p>
+<app-header></app-header>
+
+<ul>
+  <li *ngFor="let company of companies">
+    {{company | json}}
+  </li>
+</ul>
+
+

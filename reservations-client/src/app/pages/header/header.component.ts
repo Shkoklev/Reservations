@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CompanyType} from '../../models/CompanyType';
 import {CompanyTypesService} from '../../services/company-types.service';
+import {PlacesService} from '../../services/places.service';
+import {Place} from '../../models/Place';
 
 @Component({
   selector: 'app-header',
@@ -10,10 +12,14 @@ import {CompanyTypesService} from '../../services/company-types.service';
 export class HeaderComponent implements OnInit {
 
   companyTypes: CompanyType[];
+  selectedPlaceIndex = -1;
+  places: Place[];
 
-  constructor(private companyTypesService: CompanyTypesService) { }
+  constructor(private companyTypesService: CompanyTypesService, private placesService: PlacesService) { }
 
   ngOnInit() {
+    this.placesService.getPlaces()
+      .subscribe(places => this.places = places);
     this.companyTypesService.getCompanyTypes()
       .subscribe(types => this.companyTypes = types);
   }
