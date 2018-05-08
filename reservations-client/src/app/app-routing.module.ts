@@ -16,7 +16,7 @@ export const routes: Routes = [
   { path: 'companies/:type/:place', component: CompaniesComponent},
   { path: 'companies/:place/:type', component: CompaniesComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'register' component: RegisterComponent }
+  { path: 'register', component: RegisterComponent }
 ];
 
 @NgModule({

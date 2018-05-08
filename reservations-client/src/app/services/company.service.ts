@@ -31,5 +31,8 @@ export class CompanyService {
   getCompaniesByTypeAndPlace(type: String, place: String): Observable<Company[]> {
     return this.http.get<Company[]>(`${CompanyService.apiUrl}?type=${type}&place=${place}`);
   }
+  getAllCompanies():Observable<Company[]>{
+    return this.http.get<Company[]>(CompanyService.apiUrl);
+  }
 
 }
