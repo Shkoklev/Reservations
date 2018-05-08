@@ -9,11 +9,13 @@ import {Company} from '../../models/Company';
 })
 export class HomeComponent implements OnInit {
 
-  companies:Company[];
-  constructor(private companyService: CompanyService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.companyService.getAllCompanies().subscribe(res => this.companies = res);
+
   }
+
+
+
 
 }

@@ -16,6 +16,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { CompaniesComponent } from './pages/companies/companies.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { CarouselComponent } from './pages/carousel/carousel.component';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { RegisterComponent } from './pages/register/register.component';
     HomeComponent,
     CompaniesComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
