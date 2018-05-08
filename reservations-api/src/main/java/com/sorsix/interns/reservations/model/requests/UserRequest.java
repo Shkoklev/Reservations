@@ -1,4 +1,6 @@
-package com.sorsix.interns.reservations.model;
+package com.sorsix.interns.reservations.model.requests;
+
+import com.sorsix.interns.reservations.model.Place;
 
 import java.time.LocalDate;
 
