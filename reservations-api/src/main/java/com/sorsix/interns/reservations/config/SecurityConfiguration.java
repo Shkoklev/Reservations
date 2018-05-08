@@ -76,13 +76,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .frameOptions()
                 .disable();
 
-        http.authorizeRequests()
-                .antMatchers("/api/asdasdasd/**")
-                .permitAll();
 
         http.authorizeRequests()
-                .antMatchers("/api/places")
-                .authenticated();
+                .antMatchers("/api/reserve")
+                .authenticated()
+                .and()
+                .authorizeRequests()
+                .antMatchers("api/**")
+                .permitAll();
 
     }
 
