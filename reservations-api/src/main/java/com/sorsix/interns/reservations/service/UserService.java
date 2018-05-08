@@ -11,13 +11,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import javax.persistence.EntityExistsException;
 import java.time.LocalDate;
 import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
 
-    private static final Logger log = LoggerFactory.getLogger(UserService.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -26,21 +27,21 @@ public class UserService implements UserDetailsService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User createUser(
+    public User saveUser(
             String firstName,
             String lastName,
             String email,
             String username,
             String password,
             LocalDate birthDate,
-            Place place) throws Exception {
+            Place place) {
 
         Optional<User> user = userRepository.findByUsername(username);
-        if(user.isPresent()){
-            log.info("This username already exists");
-            throw new Exception("Username already exists.");
+        if (user.isPresent()) {
+            logger.warn("Username [{}] already exists", username);
+            throw new EntityExistsException(username);
         } else {
-            User newUser = new User(firstName,lastName,username,email);
+            User newUser = new User(firstName, lastName, username, email);
             newUser.setBirthDate(birthDate);
             newUser.setPlace(place);
             newUser.setPassword(passwordEncoder.encode(password));
@@ -48,10 +49,11 @@ public class UserService implements UserDetailsService {
         }
     }
 
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        log.info("Loading username: [{}]", username);
+        logger.info("Loading user: [{}]", username);
         return userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException(String.format("Username [%s] not found.", username)));
+                .orElseThrow(() -> new UsernameNotFoundException(username));
     }
 }
