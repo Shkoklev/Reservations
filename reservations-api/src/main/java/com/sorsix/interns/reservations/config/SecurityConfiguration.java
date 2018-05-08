@@ -84,8 +84,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/places")
                 .authenticated();
 
-
-
     }
 
 
