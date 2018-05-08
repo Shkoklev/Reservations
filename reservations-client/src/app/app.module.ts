@@ -15,8 +15,8 @@ import { HeaderComponent } from './pages/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CompaniesComponent } from './pages/companies/companies.component';
 import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { CarouselComponent } from './pages/carousel/carousel.component';
+import { UserComponent } from './pages/register/user.component';
+import {UserService} from './user.service';
 
 
 @NgModule({
@@ -27,7 +27,7 @@ import { CarouselComponent } from './pages/carousel/carousel.component';
     HomeComponent,
     CompaniesComponent,
     LoginComponent,
-    RegisterComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +39,8 @@ import { CarouselComponent } from './pages/carousel/carousel.component';
     PlacesService,
     CompanyTypesService,
     CompanyService,
-    CompanyImageService
+    CompanyImageService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

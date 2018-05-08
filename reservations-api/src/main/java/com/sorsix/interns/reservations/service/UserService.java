@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.persistence.EntityExistsException;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -55,5 +56,9 @@ public class UserService implements UserDetailsService {
         logger.info("Loading user: [{}]", username);
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 }

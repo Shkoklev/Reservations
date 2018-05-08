@@ -5,7 +5,10 @@ import com.sorsix.interns.reservations.model.User;
 import com.sorsix.interns.reservations.model.requests.UserRequest;
 import com.sorsix.interns.reservations.service.UserService;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
@@ -20,6 +23,11 @@ public class UserController {
     @PostMapping("/register")
     public User registerUser(@RequestBody UserRequest userRequest) {
         return userService.saveUser(userRequest.firstName, userRequest.lastName, userRequest.email, userRequest.username,  userRequest.password, userRequest.birthDate, userRequest.place);
+    }
+
+    @GetMapping
+    public List<User> getUsers() {
+         return userService.getAllUsers();
     }
 
 }

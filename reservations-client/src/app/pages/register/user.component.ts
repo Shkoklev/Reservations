@@ -7,7 +7,7 @@ import {UserService} from '../../user.service';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class UserComponent implements OnInit {
 
   firstName: String;
   lastName: String;
