@@ -14,6 +14,8 @@ import { CompanyImageService } from './services/company-image.service';
 import { HeaderComponent } from './pages/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CompaniesComponent } from './pages/companies/companies.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { CompaniesComponent } from './pages/companies/companies.component';
     AdminComponent,
     HeaderComponent,
     HomeComponent,
-    CompaniesComponent
+    CompaniesComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
