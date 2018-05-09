@@ -40,7 +40,6 @@ public class Company {
     public void setImages(List<CompanyImage> images) {
         this.images = images;
     }
-
     public CompanyType getCompanyType() {
         return companyType;
     }

@@ -1,6 +1,8 @@
 
 package com.sorsix.interns.reservations.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 
@@ -14,6 +16,7 @@ public class CompanyImage {
     @Column(name = "image_url", nullable = false)
     private String imageUrl;
 
+    @JsonIgnore
     @ManyToOne(optional = false)
     private Company company;
 

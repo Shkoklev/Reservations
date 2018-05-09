@@ -2,10 +2,7 @@ package com.sorsix.interns.reservations.api;
 
 import com.sorsix.interns.reservations.model.CompanyImage;
 import com.sorsix.interns.reservations.service.CompanyImageService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,8 +17,8 @@ public class CompanyImageController {
     }
 
     @PostMapping
-    public CompanyImage saveCompanyImages(CompanyImage companyImages){
-        return companyImageService.saveImages(companyImages);
+    public List<CompanyImage> saveCompanyImage(@RequestBody List<CompanyImage> companyImage){
+        return companyImageService.saveImage(companyImage);
     }
 
     @GetMapping
