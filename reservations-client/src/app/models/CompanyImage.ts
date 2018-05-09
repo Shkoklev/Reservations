@@ -9,4 +9,5 @@ export class CompanyImage {
     this.imageUrl = imageUrl;
     this.company = company;
   }
+
 }

@@ -18,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   onLogInClick(){
     console.log(this.username, this.password)
-    this.userService.logIn(this.username, this.password);
+    this.userService.logIn(this.username, this.password)
+      .subscribe(a=>a);
   }
 
 }

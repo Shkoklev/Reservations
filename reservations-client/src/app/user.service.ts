@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {User} from './models/User';
-import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import * as http from 'http';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class UserService {
@@ -16,16 +15,16 @@ export class UserService {
   saveUser(user: User) {
     console.log(user);
     console.log("Now is going to call http.post method")
-    this.http.post(UserService.apiUrl, user)
+    this.http.post(UserService.apiUrl, user).subscribe(p=>p);
     console.log("After breakpoint");
   }
 
 
-  public logIn(username: string, password: string) {
+  public logIn(username: string, password: string):Observable<User> {
     console.log("In login")
     let params = new HttpParams().set('username', username).set('password', password);
     console.log(params);
-    this.http.post<User>('/api/login', {params: params});
+    return this.http.post<User>('/api/login', {params: params})
   }
 
 }
