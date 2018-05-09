@@ -20,7 +20,7 @@ public class CompanyImageController {
     }
 
     @PostMapping
-    public List<CompanyImage> saveCompanyImages(List<CompanyImage> companyImages){
+    public CompanyImage saveCompanyImages(CompanyImage companyImages){
         return companyImageService.saveImages(companyImages);
     }
 

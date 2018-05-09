@@ -17,7 +17,12 @@ public class CompanyImage {
     @ManyToOne(optional = false)
     private Company company;
 
-    public CompanyImage() { }
+    public CompanyImage(){}
+
+    public CompanyImage(String imageUrl,Company company) {
+        this.imageUrl=imageUrl;
+        this.company=company;
+    }
 
     public Company getCompany() {
         return company;

@@ -19,7 +19,7 @@ public class CompanyImageService {
         return repository.findAll();
     }
 
-    public List<CompanyImage> saveImages(List<CompanyImage> images){
-        return repository.saveAll(images);
+    public CompanyImage saveImages(CompanyImage images){
+        return repository.save(images);
     }
 }
