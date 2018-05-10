@@ -46,6 +46,7 @@ public class Company {
     }
 
     public void setCompanyType(CompanyType companyType) {
+
         this.companyType = companyType;
     }
 
