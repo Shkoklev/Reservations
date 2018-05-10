@@ -27,6 +27,8 @@ export class LoginComponent implements OnInit {
       .subscribe(res =>{
         if(res === false){
           this.labelText = "Bad Credentials";
+        }else {
+          this.router.navigate(['/']);
         }
       });
   }

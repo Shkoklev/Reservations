@@ -22,7 +22,9 @@ public class UserController {
 
     @PostMapping("/register")
     public User registerUser(@RequestBody UserRequest userRequest) {
-        return userService.saveUser(userRequest.firstName, userRequest.lastName, userRequest.email, userRequest.username,  userRequest.password, userRequest.birthDate, userRequest.place);
+        return userService.saveUser(userRequest.firstName, userRequest.lastName,
+                userRequest.email, userRequest.username,  userRequest.password,
+                userRequest.birthDate, userRequest.place);
     }
 
     @GetMapping
