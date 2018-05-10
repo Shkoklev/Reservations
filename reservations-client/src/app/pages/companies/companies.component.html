@@ -1,9 +1,18 @@
 <app-header></app-header>
 
-<ul>
-  <li *ngFor="let company of companies">
-    {{company | json}}
-  </li>
-</ul>
-
+<div class="list-group">
+  <a *ngFor="let company of companies" class="list-group-item list-group-item-action">
+    <div class="d-flex">
+      <div class="col-lg-4">
+        <img src="{{company.images[0].imageUrl}}" alt="Show image" style="width: 300px; height: 200px">
+      </div>
+      <div class="col-lg-8">
+        <div class="d-flexx justify-content-between">
+          <h5>{{ company.name }}</h5>
+          <p>{{company.address}}</p>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
 

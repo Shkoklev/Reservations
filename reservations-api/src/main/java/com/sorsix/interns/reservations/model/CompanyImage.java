@@ -1,7 +1,6 @@
 
 package com.sorsix.interns.reservations.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -16,25 +15,11 @@ public class CompanyImage {
     @Column(name = "image_url", nullable = false)
     private String imageUrl;
 
-    @JsonIgnore
-    @ManyToOne(optional = false)
-    private Company company;
-
     public CompanyImage(){}
 
-    public CompanyImage(String imageUrl,Company company) {
+    public CompanyImage(String imageUrl) {
         this.imageUrl=imageUrl;
-        this.company=company;
     }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
 
     public Long getId() {
         return id;

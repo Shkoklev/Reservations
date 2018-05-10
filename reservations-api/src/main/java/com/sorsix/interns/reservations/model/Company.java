@@ -27,7 +27,8 @@ public class Company {
     @ManyToOne(optional = false)
     private Place place;
 
-    @OneToMany(mappedBy = "company")
+    @JoinTable
+    @OneToMany
     private List<CompanyImage> images;
 
     @ManyToOne(optional = false)

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../models/User';
-import {UserService} from '../../user.service';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-register',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
 export class UserComponent implements OnInit {
 

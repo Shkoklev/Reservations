@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PlacesService} from '../../services/places.service';
 import {Observable} from 'rxjs/Observable';
 import {Place} from '../../models/Place';
 import {CompanyTypesService} from '../../services/company-types.service';
 import {CompanyType} from '../../models/CompanyType';
 import {CompanyService} from '../../services/company.service';
+import {CompanyImage} from '../../models/CompanyImage';
 
 @Component({
   selector: 'app-admin',
@@ -15,7 +16,7 @@ export class AdminComponent implements OnInit {
 
   name = '';
   address = '';
-  description= '';
+  description = '';
   capacity = 0;
   places: Place[];
   selectedPlaceIndex = 0;
@@ -23,10 +24,11 @@ export class AdminComponent implements OnInit {
   selectedCompanyTypeIndex = 0;
 
   currentUrl = '';
-  images = [];
+  images: CompanyImage[]=[];
 
   constructor(private placesService: PlacesService, private companyTypesService: CompanyTypesService,
-              private companyService: CompanyService) { }
+              private companyService: CompanyService) {
+  }
 
   ngOnInit() {
     this.placesService.getPlaces()
@@ -36,7 +38,8 @@ export class AdminComponent implements OnInit {
   }
 
   onAddImageUrl() {
-    this.images.push(this.currentUrl);
+    let image = new CompanyImage(this.currentUrl);
+    this.images.push(image);
     this.currentUrl = '';
   }
 
