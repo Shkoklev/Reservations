@@ -12,6 +12,7 @@ export const routes: Routes = [
   { path: 'admin', component: AdminComponent},
   { path: 'home', component: HomeComponent},
   { path: 'companies/:type', component: CompaniesComponent},
+  { path: 'companies', component: CompaniesComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: UserComponent }
 ];

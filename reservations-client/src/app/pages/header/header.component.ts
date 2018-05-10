@@ -3,7 +3,7 @@ import {CompanyType} from '../../models/CompanyType';
 import {CompanyTypesService} from '../../services/company-types.service';
 import {PlacesService} from '../../services/places.service';
 import {Place} from '../../models/Place';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   places: Place[];
 
   constructor(private companyTypesService: CompanyTypesService, private placesService: PlacesService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -28,11 +28,22 @@ export class HeaderComponent implements OnInit {
   }
 
   Search() {
+    if (this.checkIfSelectedPlace() === false)
+      return;
+    let currentUrl = this.route.toString();
     let url;
-    if (this.route.toString().indexOf('companies') > 0)
-      url = `?place=${this.places[this.selectedPlaceIndex].name}`;
+    if (currentUrl.indexOf('companies') > 0) {
+
+      url = `${this.router.url}?place=${this.places[this.selectedPlaceIndex].name}`;
+    }
     else
-      url = `companies?place=${this.places[this.selectedPlaceIndex].name}`;
+      url = `/companies?place=${this.places[this.selectedPlaceIndex].name}`;
+    console.log(url);
+    this.router.navigateByUrl(url);
+  }
+
+  private checkIfSelectedPlace(): Boolean {
+      return this.selectedPlaceIndex !== -1;
   }
 
 }

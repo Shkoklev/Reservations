@@ -17,6 +17,7 @@ import { CompaniesComponent } from './pages/companies/companies.component';
 import { LoginComponent } from './pages/login/login.component';
 import { UserComponent } from './pages/register/register.component';
 import {UserService} from './services/user.service';
+import {RouterModule, Routes} from '@angular/router';
 
 
 @NgModule({

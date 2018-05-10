@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Company} from '../../models/Company';
 import {ActivatedRoute, Params} from '@angular/router';
 import {CompanyService} from '../../services/company.service';
@@ -11,15 +11,15 @@ import {CompanyService} from '../../services/company.service';
 export class CompaniesComponent implements OnInit {
 
   companies: Company[];
-  typeName: String=null;
-  placeName: String=null;
+  typeName: String = null;
+  placeName: String = null;
 
-  constructor(private route: ActivatedRoute,private companyService: CompanyService) {
+  constructor(private route: ActivatedRoute, private companyService: CompanyService) {
     route.params.subscribe(val => {
-      this.typeName=this.route.snapshot.paramMap.get('type');
-      this.placeName=this.route.snapshot.paramMap.get('place');
+      this.typeName = this.route.snapshot.paramMap.get('type');
+      this.placeName = this.route.snapshot.paramMap.get('place');
       this.companyService.getCompaniesByType(this.typeName)
-        .subscribe(response=>this.companies=response);
+        .subscribe(response => this.companies = response);
     });
   }
 

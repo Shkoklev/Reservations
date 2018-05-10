@@ -8,13 +8,13 @@
         <a routerLink="/companies/{{type.name}}" class="nav-link">{{type.name}}</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <form class="form-inline my-2 my-lg-0" (submit)="Search()">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <select class="form-control form-control-sm" [(ngModel)]="selectedPlaceIndex" name="place" id="place">
         <option [value]="-1">All</option>
         <option *ngFor="let place of places; let i=index" [value]="i">{{place.name}}</option>
       </select>
-      <button (click)="Search()" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+      <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
     </form>
   </div>
 </nav>
