@@ -1,10 +1,12 @@
 package com.sorsix.interns.reservations.model;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Collections;
 
 @Entity
 public class Owner implements UserDetails{
@@ -75,7 +77,7 @@ public class Owner implements UserDetails{
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return Collections.singletonList(new SimpleGrantedAuthority("ADMIN"));
     }
 
     @Override

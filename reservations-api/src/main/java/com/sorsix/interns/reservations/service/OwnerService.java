@@ -4,6 +4,7 @@ import com.sorsix.interns.reservations.model.Owner;
 import com.sorsix.interns.reservations.repository.OwnerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -40,6 +41,7 @@ public class OwnerService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         logger.info("Loading owner: [{}]", username);
+        Optional<Owner> u = repository.findByEmail(username);
         return repository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
     }
