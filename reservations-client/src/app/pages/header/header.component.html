@@ -9,12 +9,12 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0" (submit)="Search()">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <select class="form-control form-control-sm" [(ngModel)]="selectedPlaceIndex" name="place" id="place">
         <option [value]="-1">All</option>
         <option *ngFor="let place of places; let i=index" [value]="i">{{place.name}}</option>
       </select>
       <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
     </form>
+    <button routerLink="/login" class="btn btn-primary">Log in</button>
   </div>
 </nav>

@@ -38,4 +38,8 @@ export class CompanyService {
     return this.http.get<Company[]>(CompanyService.apiUrl);
   }
 
+  loadCompanies() {
+
+  }
+
 }
