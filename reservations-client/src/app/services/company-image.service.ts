@@ -11,9 +11,8 @@ export class CompanyImageService {
 
   constructor(private http: HttpClient) { }
 
-  saveImages(urls: string[], company: Company): Observable<CompanyImage[]> {
-    let images = urls.map(url => new CompanyImage(url, company));
-    return this.http.post<CompanyImage[]>(CompanyImageService.apiUrl, images);
+  saveImages(images: CompanyImage[]) {
+    this.http.post<CompanyImage[]>(CompanyImageService.apiUrl, images).subscribe(p=>p);
   }
 
 }

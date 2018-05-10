@@ -27,7 +27,8 @@ public class Company {
     @ManyToOne(optional = false)
     private Place place;
 
-    @OneToMany(mappedBy = "company")
+    @JoinTable
+    @OneToMany
     private List<CompanyImage> images;
 
     @ManyToOne(optional = false)
@@ -40,12 +41,12 @@ public class Company {
     public void setImages(List<CompanyImage> images) {
         this.images = images;
     }
-
     public CompanyType getCompanyType() {
         return companyType;
     }
 
     public void setCompanyType(CompanyType companyType) {
+
         this.companyType = companyType;
     }
 

@@ -10,3 +10,7 @@ img {
 select {
    margin-right: 8px;
 }
+
+.form-inline {
+  padding-right: 120px;
+}

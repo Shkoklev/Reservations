@@ -1,6 +1,7 @@
 
 package com.sorsix.interns.reservations.model;
 
+
 import javax.persistence.*;
 
 
@@ -14,19 +15,11 @@ public class CompanyImage {
     @Column(name = "image_url", nullable = false)
     private String imageUrl;
 
-    @ManyToOne(optional = false)
-    private Company company;
+    public CompanyImage(){}
 
-    public CompanyImage() { }
-
-    public Company getCompany() {
-        return company;
+    public CompanyImage(String imageUrl) {
+        this.imageUrl=imageUrl;
     }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
 
     public Long getId() {
         return id;

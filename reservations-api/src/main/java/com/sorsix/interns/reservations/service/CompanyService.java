@@ -11,9 +11,11 @@ import java.util.Optional;
 public class CompanyService {
 
     private final CompanyRepository repository;
+    private final CompanyImageService companyImageService;
 
-    public CompanyService(CompanyRepository repository) {
+    public CompanyService(CompanyRepository repository,CompanyImageService companyImageService) {
         this.repository = repository;
+        this.companyImageService=companyImageService;
     }
 
     public List<Company> getCompanies(String type, String place) {
@@ -49,6 +51,7 @@ public class CompanyService {
     }
 
     public Company saveCompany(Company company){
+        this.companyImageService.saveImage(company.getImages());
         return repository.save(company);
     }
 
