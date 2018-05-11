@@ -7,6 +7,8 @@ import {CompaniesComponent} from './pages/companies/companies.component';
 import {LoginComponent} from './pages/login/login.component';
 import {UserComponent} from './pages/register/register.component';
 import {RegisterowenerComponent} from './pages/registerowener/registerowener.component';
+import {CompanyDetailsComponent} from './pages/company-details/company-details.component';
+import {ReservationFormComponent} from './pages/reservation-form/reservation-form.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -16,7 +18,8 @@ export const routes: Routes = [
   { path: 'companies', component: CompaniesComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: UserComponent },
-  { path:  'register/owener', component: RegisterowenerComponent}
+  { path:  'register/owner', component: RegisterowenerComponent},
+  { path:  'company/:id', component: CompanyDetailsComponent}
 ];
 
 @NgModule({

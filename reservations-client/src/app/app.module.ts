@@ -20,7 +20,8 @@ import {UserService} from './services/user.service';
 import {RouterModule, Routes} from '@angular/router';
 import { RegisterowenerComponent } from './pages/registerowener/registerowener.component';
 import { OwnerloginComponent } from './pages/ownerlogin/ownerlogin.component';
-import { CompanyDetailsComponent } from './company-details/company-details.component';
+import { CompanyDetailsComponent } from './pages/company-details/company-details.component';
+import { ReservationFormComponent } from './pages/reservation-form/reservation-form.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { CompanyDetailsComponent } from './company-details/company-details.compo
     RegisterowenerComponent,
     OwnerloginComponent,
     CompanyDetailsComponent,
+    ReservationFormComponent
   ],
   imports: [
     BrowserModule,

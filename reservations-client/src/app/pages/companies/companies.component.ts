@@ -19,14 +19,14 @@ export class CompaniesComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(val => {
-      this.typeName = this.route.snapshot.paramMap.get('type');
+      this.typeName = val['type'];
       if (this.typeName != null) {
         this.companyService.getCompaniesByType(this.typeName)
           .subscribe(response => this.companies = response);
       }
     });
     this.route.queryParams.subscribe(val => {
-      this.placeName = this.route.snapshot.queryParamMap.get('place');
+      this.placeName = val['place'];
       if (this.placeName != null)
         this.companyService.getCompaniesByPlace(this.placeName)
           .subscribe(response => this.companies = response);

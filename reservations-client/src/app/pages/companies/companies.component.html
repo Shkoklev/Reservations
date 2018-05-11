@@ -12,8 +12,8 @@
           <p>{{company.address}}</p>
         </div>
         <div class="pt-4">
-            <a class="btn btn-dark" href="#">Show details</a>
-          <a class="btn btn-primary" href="#">Reserve</a>
+            <a routerLink="/company/{{company.id}}" class="btn btn-dark" href="#">Show details</a>
+          <a routerLink="/reservation/{{company.id}}" class="btn btn-primary" href="#">Reserve</a>
         </div>
       </div>
     </div>
