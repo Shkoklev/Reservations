@@ -1,17 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 import {User} from '../../models/User';
 import {UserService} from '../../services/user.service';
-import {Router} from '@angular/router';
-import {map} from 'rxjs/operator/map';
-import {Observable} from 'rxjs/Observable';
-import {validate} from 'codelyzer/walkerFactory/walkerFn';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-registerowener',
+  templateUrl: './registerowener.component.html',
+  styleUrls: ['./registerowener.component.css']
 })
-export class UserComponent implements OnInit {
+export class RegisterowenerComponent implements OnInit {
 
   firstName: string;
   lastName: string;

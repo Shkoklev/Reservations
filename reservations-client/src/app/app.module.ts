@@ -18,6 +18,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { UserComponent } from './pages/register/register.component';
 import {UserService} from './services/user.service';
 import {RouterModule, Routes} from '@angular/router';
+import { RegisterowenerComponent } from './pages/registerowener/registerowener.component';
+import { OwnerloginComponent } from './pages/ownerlogin/ownerlogin.component';
+import { CompanyDetailsComponent } from './company-details/company-details.component';
 
 
 @NgModule({
@@ -29,6 +32,9 @@ import {RouterModule, Routes} from '@angular/router';
     CompaniesComponent,
     LoginComponent,
     UserComponent,
+    RegisterowenerComponent,
+    OwnerloginComponent,
+    CompanyDetailsComponent,
   ],
   imports: [
     BrowserModule,

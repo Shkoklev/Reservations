@@ -1,0 +1,20 @@
+<div id="login-modal">
+
+  <div>
+    <div class="loginmodal-container">
+      <h1>Login to Your Account</h1><br>
+      <form (submit)="onLogInClick()">
+        <input [(ngModel)]="username" type="text" name="user" placeholder="Username">
+        <input [(ngModel)]="password" id="password" type="password" name="pass" placeholder="Password">
+        <p style="color: red">{{ labelText }}</p>
+        <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+      </form>
+
+      <div class="login-help">
+        <a routerLink="/register">Register</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
