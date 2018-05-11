@@ -1,3 +1,4 @@
+<h2 class="main-center">Register</h2>
 
   <div class="main-login main-center">
     <form class="form-horizontal" (submit)="onSubmit()">
@@ -57,14 +58,13 @@
         <div class="cols-sm-10">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-            <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
+            <input [(ngModel)]="confirmPassword" type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
           </div>
         </div>
       </div>
-      <p style="color:red">{{labelText}}</p>
 
       <div class="form-group ">
-        <button type="submit"  class="btn btn-primary btn-lg btn-block login-button">Register</button>
+        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
       </div>
       <div class="login-register">
         <a routerLink="/login">Login</a>

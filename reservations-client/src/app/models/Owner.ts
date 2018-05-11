@@ -1,8 +1,8 @@
-export class User {
-   firstName: String;
-   lastName: String;
-   email: String;
-   password: String;
+export class Owener {
+  firstName: String;
+  lastName: String;
+  email: String;
+  password: String;
 
 
   constructor(firstName: String, lastName: String, email: String, password: String) {

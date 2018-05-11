@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import {Router} from '@angular/router';
 import {map} from 'rxjs/operator/map';
+import {Owener} from '../models/Owner';
 
 @Injectable()
 export class UserService {
@@ -23,9 +24,9 @@ export class UserService {
   }
 
 
-  public logIn(username: string, password: string): Observable<boolean> {
+  public logIn(email: string, password: string): Observable<boolean> {
     let formData: FormData = new FormData();
-    formData.append('username', username);
+    formData.append('email', email);
     formData.append('password', password);
     return this.http.post('/api/login', formData)
       .map(response => {
@@ -35,7 +36,25 @@ export class UserService {
         console.log(err);
         return Observable.of(false);
       });
+  }
 
+  registerOwener(owner: Owener){
+    return this.http.post<User>('/api/owner/register', owner)
+      .map(res => true)
+      .catch(err => Observable.of(false));
+  }
+  logInOwner(email: string, password: string){
+    let formData: FormData = new FormData();
+    formData.append('email', email);
+    formData.append('password', password);
+    return this.http.post('/api/admin/login', formData)
+      .map(response => {
+        this.isLoggedIn = true;
+        return true;
+      }).catch(err => {
+        console.log(err);
+        return Observable.of(false);
+      });
   }
 
 }
