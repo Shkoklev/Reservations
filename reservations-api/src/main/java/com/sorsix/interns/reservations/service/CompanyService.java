@@ -50,6 +50,10 @@ public class CompanyService {
         return repository.findByCompanyType_NameAndPlace_Name(companyTypeName, placeName);
     }
 
+    public List<Company> getCompaniesByOwnerId(Long id) {
+        return repository.findByOwner_Id(id);
+    }
+
     public Company saveCompany(Company company){
         this.companyImageService.saveImage(company.getImages());
         return repository.save(company);

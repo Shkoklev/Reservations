@@ -59,13 +59,13 @@ public class SecurityConfiguration {
                     .exceptionHandling()
                     .authenticationEntryPoint(authenticationEntryPoint);
 
-            http.antMatcher("/api/admin/**")
+            http.antMatcher("/api/owner/**")
                     .authorizeRequests()
-                    .antMatchers("/api/admin/**")
+                    .antMatchers("/api/owner/**")
                     .hasAuthority("ADMIN")
                     .and()
                     .formLogin()
-                    .loginProcessingUrl("/api/admin/login")
+                    .loginProcessingUrl("/api/owner/login")
                     .successHandler(successHandler)
                     .failureHandler(failureHandler)
                     .usernameParameter("email")
@@ -136,7 +136,7 @@ public class SecurityConfiguration {
 
 
             http.authorizeRequests()
-                    .antMatchers("/api/reservations")
+                    .antMatchers("/api/user/loggedUser")
                     .hasAuthority("USER");
         }
     }
