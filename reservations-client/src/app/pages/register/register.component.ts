@@ -37,37 +37,37 @@ export class UserComponent implements OnInit {
 
   onSubmit() {
 
-    if(this.validate()) {
+
+    if (this.validate()) {
       this.user = new User(this.firstName, this.lastName, this.email, this.username, this.password);
       this.userService.saveUser(this.user)
         .subscribe(res => {
           console.log(res);
-          this.route.navigateByUrl('/');
+          this.route.navigateByUrl('/home');
         });
     }
-    }
+  }
 
-    validate(): boolean{
+  validate(): boolean {
     this.valid = true;
-      this.usernameLabel = '';
-      this.passwordLengthValid= '';
-      this.passwordValid = '';
+    this.usernameLabel = '';
+    this.passwordLengthValid = '';
+    this.passwordValid = '';
 
-      if(this.password != this.confirmPassword){
-        this.passwordValid = "Password does not match";
-        this.valid = false;
-      }
-      if(this.password.length <=3){
-        this.passwordLengthValid="Password length should be at least 5 char";
-        this.valid = false;
-      }
-      if(this.username.length<=3) {
-        this.usernameLabel = "Username should be at least 3 char";
-        this.valid = false;
-      }
-      return this.valid;
+    if (this.password != this.confirmPassword) {
+      this.passwordValid = 'Password does not match';
+      this.valid = false;
     }
-
+    if (this.password.length <= 3) {
+      this.passwordLengthValid = 'Password length should be at least 5 char';
+      this.valid = false;
+    }
+    if (this.username.length <= 3) {
+      this.usernameLabel = 'Username should be at least 3 char';
+      this.valid = false;
+    }
+    return this.valid;
+  }
 
 
 }
