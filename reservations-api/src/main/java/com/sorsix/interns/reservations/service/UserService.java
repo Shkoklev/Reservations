@@ -28,21 +28,13 @@ public class UserService implements UserDetailsService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User saveUser(
-            String firstName,
-            String lastName,
-            String email,
-            String username,
-            String password,
-            LocalDate birthDate,
-            Place place) {
-
-        Optional<User> user = userRepository.findByUsername(username);
-        if (user.isPresent()) {
-            logger.warn("Username [{}] already exists", username);
-            throw new EntityExistsException(username);
+    public User saveUser(String firstName, String lastName, String email, String password, LocalDate birthDate, Place place) {
+        boolean userExists = userRepository.existsByEmail(email);
+        if (userExists) {
+            logger.warn("User [{}] already exists", email);
+            throw new EntityExistsException(email);
         } else {
-            User newUser = new User(firstName, lastName, username, email);
+            User newUser = new User(firstName, lastName, email);
             newUser.setBirthDate(birthDate);
             newUser.setPlace(place);
             newUser.setPassword(passwordEncoder.encode(password));
@@ -54,7 +46,7 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         logger.info("Loading user: [{}]", username);
-        return userRepository.findByUsername(username)
+        return userRepository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
     }
 
