@@ -37,26 +37,4 @@ export class UserService {
         return Observable.of(false);
       });
   }
-
-  registerOwener(owner: Owener){
-    return this.http.post<User>('/api/owner/register', owner)
-      .map(res => true)
-      .catch(err => Observable.of(false));
-  }
-  logInOwner(email: string, password: string){
-    let formData: FormData = new FormData();
-    formData.append('email', email);
-    formData.append('password', password);
-    return this.http.post('/api/admin/login', formData)
-      .map(response => {
-        this.isLoggedIn = true;
-        return true;
-      }).catch(err => {
-        console.log(err);
-        return Observable.of(false);
-      });
-  }
-
-
-
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
+import {OwnerService} from '../../owner.service';
 
 @Component({
   selector: 'app-ownerlogin',
@@ -9,7 +10,7 @@ import {UserService} from '../../services/user.service';
 })
 export class OwnerloginComponent implements OnInit {
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private ownerService: OwnerService, private router: Router) { }
   username: string;
   password: string;
   labelText:string = "";
@@ -17,7 +18,7 @@ export class OwnerloginComponent implements OnInit {
   }
 
   onLogInClick() {
-    this.userService.logIn(this.username, this.password)
+    this.ownerService.logInOwner(this.username, this.password)
       .subscribe(res =>{
         if(res === false){
           this.labelText = "Bad Credentials";

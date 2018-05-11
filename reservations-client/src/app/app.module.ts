@@ -22,6 +22,8 @@ import { RegisterowenerComponent } from './pages/registerowener/registerowener.c
 import { OwnerloginComponent } from './pages/ownerlogin/ownerlogin.component';
 import { CompanyDetailsComponent } from './pages/company-details/company-details.component';
 import { ReservationFormComponent } from './pages/reservation-form/reservation-form.component';
+import {OwnerService} from './owner.service';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { ReservationFormComponent } from './pages/reservation-form/reservation-f
     RegisterowenerComponent,
     OwnerloginComponent,
     CompanyDetailsComponent,
-    ReservationFormComponent
+    ReservationFormComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { ReservationFormComponent } from './pages/reservation-form/reservation-f
     CompanyTypesService,
     CompanyService,
     CompanyImageService,
-    UserService
+    UserService,
+    OwnerService
   ],
   bootstrap: [AppComponent]
 })
