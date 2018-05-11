@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class ReservationFormComponent implements OnInit {
 
- // @Input company: Company;
+  @Input() company: Company;
 
   constructor(private userService: UserService, private router: Router) { }
 

@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import {Router} from '@angular/router';
 import {map} from 'rxjs/operator/map';
-import {Owener} from '../models/Owner';
+import {Owner} from '../models/Owner';
 
 @Injectable()
 export class UserService {
@@ -38,7 +38,7 @@ export class UserService {
       });
   }
 
-  registerOwener(owner: Owener){
+  registerOwener(owner: Owner){
     return this.http.post<User>('/api/owner/register', owner)
       .map(res => true)
       .catch(err => Observable.of(false));

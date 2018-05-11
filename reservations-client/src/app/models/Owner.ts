@@ -1,4 +1,4 @@
-export class Owener {
+export class Owner {
   firstName: String;
   lastName: String;
   email: String;
