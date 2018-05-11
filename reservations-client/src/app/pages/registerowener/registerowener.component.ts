@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {User} from '../../models/User';
 import {UserService} from '../../services/user.service';
+import {OwnerService} from '../../owner.service';
 
 @Component({
   selector: 'app-registerowener',
@@ -19,14 +20,13 @@ export class RegisterowenerComponent implements OnInit {
   user: User;
 
 
-  usernameLabel: string = '';
   passwordLengthValid: string = '';
   passwordValid: string = '';
 
 
   valid: boolean = true;
 
-  constructor(private userService: UserService, private route: Router) {
+  constructor(private ownerService: OwnerService, private route: Router) {
   }
 
   ngOnInit() {
@@ -37,7 +37,7 @@ export class RegisterowenerComponent implements OnInit {
 
     if (this.validate()) {
       this.user = new User(this.firstName, this.lastName, this.email, this.password);
-      this.userService.saveUser(this.user)
+      this.ownerService.registerOwner(this.user)
         .subscribe(res => {
           console.log(res);
           this.route.navigateByUrl('/home');
@@ -47,7 +47,6 @@ export class RegisterowenerComponent implements OnInit {
 
   validate(): boolean {
     this.valid = true;
-    this.usernameLabel = '';
     this.passwordLengthValid = '';
     this.passwordValid = '';
 
@@ -59,10 +58,7 @@ export class RegisterowenerComponent implements OnInit {
       this.passwordLengthValid = 'Password length should be at least 5 char';
       this.valid = false;
     }
-    if (this.username.length <= 3) {
-      this.usernameLabel = 'Username should be at least 3 char';
-      this.valid = false;
-    }
+
     return this.valid;
   }
 
