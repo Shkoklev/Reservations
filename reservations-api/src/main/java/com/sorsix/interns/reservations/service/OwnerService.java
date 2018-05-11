@@ -27,8 +27,8 @@ public class OwnerService implements UserDetailsService {
     }
 
     public Owner saveOwner(String firstName, String lastName, String email, String password) {
-        Optional<Owner> owner = repository.findByEmail(email);
-        if (owner.isPresent()) {
+        boolean ownerExists = repository.existsByEmail(email);
+        if (ownerExists) {
             logger.warn("Owner [{}] already exists.", email);
             throw new EntityExistsException(email);
         } else {
@@ -41,7 +41,6 @@ public class OwnerService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         logger.info("Loading owner: [{}]", username);
-        Optional<Owner> u = repository.findByEmail(username);
         return repository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
     }

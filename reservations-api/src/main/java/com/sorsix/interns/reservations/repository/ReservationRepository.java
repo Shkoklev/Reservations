@@ -8,7 +8,4 @@ import java.util.List;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-
-    Long countByCompany_Name(String name);
-    List<Reservation> findByUser_Username(String username);
 }

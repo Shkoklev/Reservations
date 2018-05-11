@@ -1,7 +1,5 @@
 package com.sorsix.interns.reservations.model;
 
-import org.hibernate.validator.constraints.UniqueElements;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -22,7 +20,13 @@ public class Company {
     private String description;
 
     @Column(name = "capacity", nullable = false)
-    private int capacity;
+    private Integer capacity;
+
+    @Column(name = "working_days_mask", nullable = false)
+    private String workingDaysMask;
+
+    @ManyToOne(optional = false)
+    private Owner owner;
 
     @ManyToOne(optional = false)
     private Place place;
@@ -33,6 +37,10 @@ public class Company {
 
     @ManyToOne(optional = false)
     private CompanyType companyType;
+
+    public Company(String workingDaysMask) {
+        this.workingDaysMask = workingDaysMask;
+    }
 
     public List<CompanyImage> getImages() {
         return images;
