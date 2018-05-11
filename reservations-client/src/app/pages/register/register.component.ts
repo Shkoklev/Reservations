@@ -16,13 +16,11 @@ export class UserComponent implements OnInit {
   firstName: string;
   lastName: string;
   email: string;
-  username: string;
   password: string;
   confirmPassword: string;
   user: User;
 
 
-  usernameLabel: string = '';
   passwordLengthValid: string = '';
   passwordValid: string = '';
 
@@ -36,8 +34,6 @@ export class UserComponent implements OnInit {
   }
 
   onSubmit() {
-
-
     if (this.validate()) {
       this.user = new User(this.firstName, this.lastName, this.email, this.password);
       this.userService.saveUser(this.user)
@@ -50,7 +46,6 @@ export class UserComponent implements OnInit {
 
   validate(): boolean {
     this.valid = true;
-    this.usernameLabel = '';
     this.passwordLengthValid = '';
     this.passwordValid = '';
 
@@ -62,10 +57,7 @@ export class UserComponent implements OnInit {
       this.passwordLengthValid = 'Password length should be at least 5 char';
       this.valid = false;
     }
-    if (this.username.length <= 3) {
-      this.usernameLabel = 'Username should be at least 3 char';
-      this.valid = false;
-    }
+
     return this.valid;
   }
 
