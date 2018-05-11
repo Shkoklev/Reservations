@@ -61,6 +61,8 @@ public class SecurityConfiguration {
 
             http.antMatcher("/api/owner/**")
                     .authorizeRequests()
+                    .antMatchers("/api/owner/register")
+                    .permitAll()
                     .antMatchers("/api/owner/**")
                     .hasAuthority("ADMIN")
                     .and()
@@ -137,7 +139,9 @@ public class SecurityConfiguration {
 
             http.authorizeRequests()
                     .antMatchers("/api/user/loggedUser")
-                    .hasAuthority("USER");
+                    .hasAuthority("USER")
+                    .antMatchers("api/user/register")
+                    .permitAll();
         }
     }
 

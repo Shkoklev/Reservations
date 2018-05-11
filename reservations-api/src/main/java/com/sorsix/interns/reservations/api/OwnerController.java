@@ -2,6 +2,7 @@ package com.sorsix.interns.reservations.api;
 
 import com.sorsix.interns.reservations.model.Company;
 import com.sorsix.interns.reservations.model.Owner;
+import com.sorsix.interns.reservations.model.requests.OwnerRequest;
 import com.sorsix.interns.reservations.service.CompanyService;
 import com.sorsix.interns.reservations.service.OwnerService;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +24,8 @@ public class OwnerController {
     }
 
     @PostMapping("/register")
-    public Owner registerOwner(@RequestBody Owner owner) {
-        return ownerService.saveOwner(owner.getFirstName(), owner.getLastName(), owner.getEmail(), owner.getPassword());
+    public Owner registerOwner(@RequestBody OwnerRequest request) {
+        return ownerService.saveOwner(request.firstName, request.lastName, request.email, request.password);
     }
 
     @GetMapping("/companies")
