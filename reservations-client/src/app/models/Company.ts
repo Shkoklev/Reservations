@@ -1,6 +1,7 @@
 import {Place} from './Place';
 import {CompanyType} from './CompanyType';
 import {CompanyImage} from './CompanyImage';
+import {Owner} from './Owner';
 
 export class Company {
   id: number;
@@ -10,6 +11,8 @@ export class Company {
   capacity: number;
   place: Place;
   companyType: CompanyType;
+  owner: Owner;
+  workingDaysMask: String;
   images: CompanyImage[];
 
 
@@ -21,9 +24,7 @@ export class Company {
     this.place = place;
     this.companyType = companyType;
     this.images = images;
-  }
-
-  setImages(images: CompanyImage[]) {
-    this.images = images;
+   // this.owner=owner;
+   // this.workingDaysMask=workingDaysMask;
   }
 }

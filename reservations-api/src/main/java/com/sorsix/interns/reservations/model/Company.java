@@ -38,6 +38,8 @@ public class Company {
     @ManyToOne(optional = false)
     private CompanyType companyType;
 
+    public Company(){}
+
     public Company(String workingDaysMask) {
         this.workingDaysMask = workingDaysMask;
     }

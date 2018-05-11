@@ -23,7 +23,7 @@ export class CompanyService {
   }
 
   getCompaniesByType(type: String): Observable<Company[]> {
-    return this.http.get<Company[]>(`${CompanyService.apiUrl}?type=${type}`);
+      return this.http.get<Company[]>(`${CompanyService.apiUrl}?type=${type}`);
   }
 
   getCompaniesByPlace(place: String): Observable<Company[]> {
