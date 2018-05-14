@@ -22,7 +22,11 @@ public class CompanyController {
 
     @GetMapping
     public List<Company> getCompanies(@RequestParam(value = "type", required = false) String type,
-                                      @RequestParam(value = "place", required = false) String place) {
+                                      @RequestParam(value = "place", required = false) String place,
+                                      @RequestParam(value = "query", required = false) String query) {
+        if(query != null) {
+            return companyService.getCompaniesByQuery(query);
+        }
         return companyService.getCompanies(type, place);
     }
 

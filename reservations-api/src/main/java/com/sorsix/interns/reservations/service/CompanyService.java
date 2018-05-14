@@ -19,6 +19,10 @@ public class CompanyService {
         this.companyImageService=companyImageService;
     }
 
+    public List<Company> getCompaniesByQuery(String query) {
+        return companyRepository.findByNameStartingWithIgnoreCase(query);
+    }
+
     public List<Company> getCompanies(String type, String place) {
         if(type == null && place == null) {
             return getAllCompanies();
