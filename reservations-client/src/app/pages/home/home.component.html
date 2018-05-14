@@ -8,10 +8,10 @@
 
   <div class="center">
       <h1>Plans Tonight?</h1>
-    <form class="form-horizontal" onsubmit="findCompany()">
+    <form class="form-horizontal" (submit)="findCompany()">
       <div class="form-group row">
         <div class="col-lg-8 ml-5">
-          <input type="text" class="form-control" id="name" placeholder="Restaurant, Club or Bar">
+          <input [(ngModel)]="companyName" type="text" class="form-control" name="name" id="name" placeholder="Restaurant, Club or Bar">
         </div>
         <div class="col-lg-3">
           <button class="btn btn-outline-success">Search</button>

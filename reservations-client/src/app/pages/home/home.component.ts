@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CompanyService} from '../../services/company.service';
 import {Company} from '../../models/Company';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,16 +10,16 @@ import {Company} from '../../models/Company';
 })
 export class HomeComponent implements OnInit {
 
+  companyName: String = '';
 
-
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
 
   }
 
   findCompany() {
-
+      this.router.navigateByUrl(`/company/${this.companyName}`);
   }
 
 

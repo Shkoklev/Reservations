@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 @Service
 public class CompanyService {
@@ -59,4 +60,7 @@ public class CompanyService {
         return companyRepository.save(company);
     }
 
+    public Optional<Company> getCompanyByName(String name) {
+        return companyRepository.findByName(name);
+    }
 }
