@@ -1,6 +1,7 @@
 package com.sorsix.interns.reservations.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,14 +17,23 @@ public class Reservation {
     @Column(name = "person_count", nullable = false)
     private int personCount;
 
-    @Column(name = "timestamp", nullable = false)
-    private LocalDateTime timestamp;
+    @Column(name = "for_date", nullable = false)
+    private LocalDate forDate;
 
     @ManyToOne(optional = false)
     private User user;
 
     @ManyToOne(optional = false)
     private Company company;
+
+    public Reservation() { }
+
+    public Reservation(String remark, int personCount, LocalDate forDate, Company company) {
+        this.remark = remark;
+        this.personCount = personCount;
+        this.forDate = forDate;
+        this.company = company;
+    }
 
     public Long getId() {
         return id;
@@ -49,12 +59,12 @@ public class Reservation {
         this.personCount = personCount;
     }
 
-    public LocalDateTime getTimestamp() {
-        return timestamp;
+    public LocalDate getForDate() {
+        return forDate;
     }
 
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
+    public void setForDate(LocalDate forDate) {
+        this.forDate = forDate;
     }
 
     public User getUser() {

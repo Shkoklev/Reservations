@@ -4,6 +4,7 @@ import {Company} from '../../models/Company';
 import {Router} from '@angular/router';
 import {User} from '../../models/User';
 import {ReservationService} from '../../services/reservation.service';
+import {Reservation} from '../../models/Reservation';
 
 
 @Component({
@@ -12,12 +13,13 @@ import {ReservationService} from '../../services/reservation.service';
   styleUrls: ['./reservation-form.component.css']
 })
 export class ReservationFormComponent implements OnInit {
-  model: Date;
 
   @Input() company: Company;
   user: User;
   personCount: number;
   description: string;
+  date: Date;
+
 
   constructor(private reservationService: ReservationService,
               private userService: UserService,
@@ -30,7 +32,8 @@ export class ReservationFormComponent implements OnInit {
   }
 
   reserve() {
-    console.log(this.model);
+    this.reservationService.reserve(this.description, this.personCount, this.date, this.company)
+      .subscribe(res => res);
   }
 
 }

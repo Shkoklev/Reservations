@@ -4,7 +4,7 @@ import {Company} from './Company';
 export class Reservation {
   remark: String;
   personCount: number;
-  date: Date;
+  forDate: Date;
   user: User;
   company: Company;
 
@@ -12,7 +12,7 @@ export class Reservation {
   constructor(remark: String, personCount: number, date: Date,  company: Company) {
     this.remark = remark;
     this.personCount = personCount;
-    this.date = date;
+    this.forDate = date;
     this.company = company;
   }
 }
