@@ -25,6 +25,10 @@ public class Company {
     @Column(name = "working_days_mask", nullable = false)
     private String workingDaysMask;
 
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+    }
+
     @ManyToOne(optional = false)
     private Owner owner;
 
