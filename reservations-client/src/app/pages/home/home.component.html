@@ -11,11 +11,16 @@
     <form class="form-horizontal" (submit)="findCompany()">
       <div class="form-group row">
         <div class="col-lg-8 ml-5">
-          <input [(ngModel)]="companyName" type="text" class="form-control" name="name" id="name" placeholder="Restaurant, Club or Bar">
+          <input #companyName type="text" class="form-control" name="name" id="name" (keyup)="search(companyName.value)" placeholder="Restaurant, Club or Bar">
         </div>
         <div class="col-lg-3">
           <button class="btn btn-outline-success">Search</button>
         </div>
+      </div>
+      <div class="list-group row col-lg-8 ml-5">
+        <a routerLink="/company/{{company.name}}" href="#" *ngFor="let company of companies$ | async" class="list-group-item list-group-item-action">
+          {{ company.name }}
+        </a>
       </div>
     </form>
   </div>

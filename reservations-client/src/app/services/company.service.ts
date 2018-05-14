@@ -45,4 +45,8 @@ export class CompanyService {
     return this.http.get<Company[]>('/api/owner/companies');
   }
 
+  getCompaniesByQuery(query: String) : Observable<Company[]> {
+    return this.http.get<Company[]>(`${CompanyService.apiUrl}?query=${query}`);
+  }
+
 }
