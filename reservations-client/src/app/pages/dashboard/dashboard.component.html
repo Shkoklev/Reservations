@@ -2,14 +2,15 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
 
-<div class="nav-side-menu" style="margin-left: -15px">
-  <div class="brand">{{owner}}</div>
+<div class="nav-side-menu">
+
+  <div *ngIf="owner?.firstName" class="brand">{{owner.firstName}}</div>
   <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
   <div class="menu-list">
 
     <ul id="menu-content" class="menu-content collapse out">
-        <li *ngFor="let company of companies"><i class="fas fa-map-marker fa-2x"> </i>{{company}}</li>
+        <li *ngFor="let company of companies"><i class="fas fa-map-marker fa-2x"> </i>{{company.name}}</li>
     </ul>
     <div class="center">
     <a href="/admin" class="button btn btn-info add-button" type="button"><i class="fas fa-plus fa-3x"></i>

@@ -26,4 +26,9 @@ export class OwnerService {
         return Observable.of(false);
       });
   }
+
+  isLoggedIn(): Observable<Owner>{
+    return this.http.get<Owner>('/api/owner/loggedOwner');
+
+  }
 }

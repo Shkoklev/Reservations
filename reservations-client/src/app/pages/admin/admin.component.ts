@@ -22,7 +22,7 @@ export class AdminComponent implements OnInit {
   selectedPlaceIndex = 0;
   companyTypes: CompanyType[];
   selectedCompanyTypeIndex = 0;
-
+  daysSelected = [false, false, false, false, false, false, false];
   currentUrl = '';
   images: CompanyImage[]=[];
 
@@ -44,8 +44,16 @@ export class AdminComponent implements OnInit {
   }
 
   onSubmit() {
-    this.companyService.saveCompany(this.name, this.address, this.description, this.capacity,
-      this.places[this.selectedPlaceIndex], this.companyTypes[this.selectedCompanyTypeIndex], this.images);
-  }
+    let workingDaysMask = this.daysSelected.map(day =>{
+      if(day)
+        return '1';
+      else return '0';
+    }).join('');
 
+    this.companyService.saveCompany(this.name, this.address, this.description, this.capacity,
+      this.places[this.selectedPlaceIndex], this.companyTypes[this.selectedCompanyTypeIndex], this.images, workingDaysMask);
+  }
+  see () {
+
+  }
 }

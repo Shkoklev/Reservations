@@ -56,4 +56,33 @@
   <div class="form-group col-sm-10">
     <button class="btn btn-primary">Create</button>
   </div>
+  <div class="form-check form-check-inline">
+    <input [(ngModel)]="daysSelected[0]" class="form-check-input" type="checkbox" name="inlineRadioOptions" id="Monday" value="option1">
+    <label class="form-check-label" for="Monday">Monday</label>
+  </div>
+  <div class="form-check form-check-inline ">
+    <input [(ngModel)]="daysSelected[1]" class="form-check-input" type="checkbox" name="inlineRadioOptions" id="Tuesday" value="option2">
+    <label class="form-check-label" for="Tuesday">Tuesday</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input [(ngModel)]="daysSelected[2]"  class="form-check-input" type="checkbox" name="inlineRadioOptions" id="Wednesday" value="option3">
+    <label class="form-check-label" for="Wednesday">Wednesday</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input [(ngModel)]="daysSelected[3]"  class="form-check-input" type="checkbox" name="inlineRadioOptions" id="Thursday" value="option1">
+    <label class="form-check-label" for="Thursday">Thursday</label>
+  </div>
+  <div class="form-check form-check-inline ">
+    <input [(ngModel)]="daysSelected[4]"  class="form-check-input" type="checkbox" name="inlineRadioOptions" id="Friday" value="option2">
+    <label class="form-check-label" for="Friday">Friday</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input [(ngModel)]="daysSelected[5]"  class="form-check-input" type="checkbox" name="inlineRadioOptions" id="Saturday" value="option3">
+    <label class="form-check-label" for="Saturday">Saturday</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input [(ngModel)]="daysSelected[6]" class="form-check-input" type="checkbox" name="inlineRadioOptions" id="Sunday" value="option3" >
+    <label class="form-check-label" for="Saturday">Sunday</label>
+  </div>
+  <button type="button" (click)="see()">See</button>
 </form>

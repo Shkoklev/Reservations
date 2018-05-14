@@ -16,7 +16,7 @@ public class Company {
     @Column(name = "address", nullable = false)
     private String address;
 
-    @Column(name = "description", length=1000)
+    @Column(name = "description", length = 1000)
     private String description;
 
     @Column(name = "capacity", nullable = false)
@@ -42,34 +42,7 @@ public class Company {
     @ManyToOne(optional = false)
     private CompanyType companyType;
 
-    public Company(){}
-
-    public Company(String workingDaysMask) {
-        this.workingDaysMask = workingDaysMask;
-    }
-
-    public List<CompanyImage> getImages() {
-        return images;
-    }
-
-    public void setImages(List<CompanyImage> images) {
-        this.images = images;
-    }
-    public CompanyType getCompanyType() {
-        return companyType;
-    }
-
-    public void setCompanyType(CompanyType companyType) {
-
-        this.companyType = companyType;
-    }
-
-    public Place getPlace() {
-        return place;
-    }
-
-    public void setPlace(Place place) {
-        this.place = place;
+    public Company() {
     }
 
     public Long getId() {
@@ -104,12 +77,47 @@ public class Company {
         this.description = description;
     }
 
-    public int getCapacity() {
+    public Integer getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
+    public void setCapacity(Integer capacity) {
         this.capacity = capacity;
     }
 
+    public String getWorkingDaysMask() {
+        return workingDaysMask;
+    }
+
+    public void setWorkingDaysMask(String workingDaysMask) {
+        this.workingDaysMask = workingDaysMask;
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public Place getPlace() {
+        return place;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
+    }
+
+    public List<CompanyImage> getImages() {
+        return images;
+    }
+
+    public void setImages(List<CompanyImage> images) {
+        this.images = images;
+    }
+
+    public CompanyType getCompanyType() {
+        return companyType;
+    }
+
+    public void setCompanyType(CompanyType companyType) {
+        this.companyType = companyType;
+    }
 }

@@ -12,11 +12,13 @@ export class Company {
   place: Place;
   companyType: CompanyType;
   owner: Owner;
-  workingDaysMask: String;
+  workingDaysMask: string;
   images: CompanyImage[];
 
 
-  constructor(name: string, address: string, description: string, capacity: number, place: Place, companyType: CompanyType, images: CompanyImage[]) {
+  constructor(name: string, address: string, description: string,
+              capacity: number, place: Place, companyType:
+                CompanyType, images: CompanyImage[], workingDaysMask: string) {
     this.name = name;
     this.address = address;
     this.description = description;
@@ -24,7 +26,7 @@ export class Company {
     this.place = place;
     this.companyType = companyType;
     this.images = images;
-   // this.owner=owner;
-   // this.workingDaysMask=workingDaysMask;
+    this.workingDaysMask=workingDaysMask;
+
   }
 }
