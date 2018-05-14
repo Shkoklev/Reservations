@@ -14,7 +14,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import javax.persistence.EntityExistsException;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {

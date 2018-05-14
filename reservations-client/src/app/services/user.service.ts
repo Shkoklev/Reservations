@@ -6,6 +6,8 @@ import {Observable} from 'rxjs/Observable';
 import {Router} from '@angular/router';
 import {map} from 'rxjs/operator/map';
 import {Owner} from '../models/Owner';
+import {catchError} from 'rxjs/operators';
+import {of} from 'rxjs/observable/of';
 
 @Injectable()
 export class UserService {
@@ -14,7 +16,7 @@ export class UserService {
   public isLoggedIn: boolean;
 
 
-  constructor(private http: HttpClient, private route: Router) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   saveUser(user : User): Observable<boolean>{
@@ -57,6 +59,24 @@ export class UserService {
       });
   }
 
+  getLoggedUser() {
+    return this.http.get<User>('/api/user/loggedUser')
+      .pipe(
+        catchError(this.handleError('getUser')));
+  }
 
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      console.log(`${operation} failed: ${error.message}`);
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
 
 }

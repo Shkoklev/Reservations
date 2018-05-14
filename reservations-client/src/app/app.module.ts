@@ -17,13 +17,12 @@ import { CompaniesComponent } from './pages/companies/companies.component';
 import { LoginComponent } from './pages/login/login.component';
 import { UserComponent } from './pages/register/register.component';
 import {UserService} from './services/user.service';
-import {RouterModule, Routes} from '@angular/router';
-import { RegisterowenerComponent } from './pages/registerowener/registerowener.component';
 import { OwnerloginComponent } from './pages/ownerlogin/ownerlogin.component';
 import { CompanyDetailsComponent } from './pages/company-details/company-details.component';
 import { ReservationFormComponent } from './pages/reservation-form/reservation-form.component';
-import {OwnerService} from './owner.service';
+import {OwnerService} from './services/owner.service';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import {RegisterOwnerComponent} from './pages/register-owner/register-owner.component';
 
 
 @NgModule({
@@ -35,8 +34,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     CompaniesComponent,
     LoginComponent,
     UserComponent,
-    RegisterowenerComponent,
     OwnerloginComponent,
+    RegisterOwnerComponent,
     CompanyDetailsComponent,
     ReservationFormComponent,
     DashboardComponent

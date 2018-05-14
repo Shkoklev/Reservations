@@ -1,17 +1,24 @@
 <app-header></app-header>
 
 <div class="container" *ngIf="company">
+
   <div class="row">
-    <div *ngFor="let image of company.images" class="col-md-4">
-      <img class="img-fluid" src="{{image.imageUrl}}" alt="">
-    </div>
-    <div class="col-md-8">
-      <p [innerHtml]="company.description"></p>
+
+    <div class="col-md-6">
+      <p class="lead">{{company.description}}</p>
       <p>Location: {{company.address}}</p>
       <p>Capacity: {{company.capacity}}</p>
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#reservation-form">Reserve</button>
     </div>
+
+    <div class="col-md-6">
+      <div *ngFor="let image of company.images">
+        <img class="img-fluid" src="{{image.imageUrl}}">
+      </div>
+    </div>
+
   </div>
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#reservation-form">Reserve</button>
+
 </div>
 
 <app-reservation-form [company]="company"></app-reservation-form>

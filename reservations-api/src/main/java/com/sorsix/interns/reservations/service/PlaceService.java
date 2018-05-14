@@ -9,17 +9,17 @@ import java.util.List;
 @Service
 public class PlaceService {
 
-    private final PlaceRepository repository;
+    private final PlaceRepository placeRepository;
 
     public PlaceService(PlaceRepository repository) {
-        this.repository = repository;
+        this.placeRepository = repository;
     }
 
     public List<Place> getPlaces() {
-        return repository.findAll();
+        return placeRepository.findAll();
     }
 
     public Place savePlace(Place place){
-        return repository.save(place);
+        return placeRepository.save(place);
     }
 }

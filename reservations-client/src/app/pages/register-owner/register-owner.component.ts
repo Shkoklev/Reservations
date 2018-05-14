@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {User} from '../../models/User';
-import {UserService} from '../../services/user.service';
-import {OwnerService} from '../../owner.service';
+import {OwnerService} from '../../services/owner.service';
 
 @Component({
-  selector: 'app-registerowener',
-  templateUrl: './registerowener.component.html',
-  styleUrls: ['./registerowener.component.css']
+  selector: 'app-registerowner',
+  templateUrl: './register-owner.component.html',
+  styleUrls: ['./register-owner.component.css']
 })
-export class RegisterowenerComponent implements OnInit {
+export class RegisterOwnerComponent implements OnInit {
 
   firstName: string;
   lastName: string;
@@ -54,7 +53,7 @@ export class RegisterowenerComponent implements OnInit {
       this.passwordValid = 'Password does not match';
       this.valid = false;
     }
-    if (this.password.length <= 3) {
+    if (this.password.length <= 5) {
       this.passwordLengthValid = 'Password length should be at least 5 char';
       this.valid = false;
     }

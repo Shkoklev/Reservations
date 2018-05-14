@@ -29,7 +29,9 @@ export class HeaderComponent implements OnInit {
 
   Search() {
     if(this.selectedPlaceIndex == -1)
+    {
       return;
+    }
     let url = `/companies?place=${this.places[this.selectedPlaceIndex].name}`;
     this.router.navigateByUrl(url);
   }

@@ -39,4 +39,8 @@ public class OwnerController {
         return (Owner)authentication.getPrincipal();
     }
 
+    @GetMapping
+    public List<Owner> getAllOwners() {
+        return ownerService.getAllOwners();
+    }
 }

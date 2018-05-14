@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Company} from '../../models/Company';
 import {ActivatedRoute, Params} from '@angular/router';
 import {CompanyService} from '../../services/company.service';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-companies',
@@ -14,7 +15,7 @@ export class CompaniesComponent implements OnInit {
   typeName: String = null;
   placeName: String = null;
 
-  constructor(private route: ActivatedRoute, private companyService: CompanyService) {
+  constructor(private route: ActivatedRoute, private companyService: CompanyService, private userService: UserService) {
   }
 
   ngOnInit() {

@@ -6,11 +6,11 @@ import {HomeComponent} from './pages/home/home.component';
 import {CompaniesComponent} from './pages/companies/companies.component';
 import {LoginComponent} from './pages/login/login.component';
 import {UserComponent} from './pages/register/register.component';
-import {RegisterowenerComponent} from './pages/registerowener/registerowener.component';
 import {CompanyDetailsComponent} from './pages/company-details/company-details.component';
 import {ReservationFormComponent} from './pages/reservation-form/reservation-form.component';
 import {OwnerloginComponent} from './pages/ownerlogin/ownerlogin.component';
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
+import {RegisterOwnerComponent} from './pages/register-owner/register-owner.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -20,7 +20,7 @@ export const routes: Routes = [
   { path: 'companies', component: CompaniesComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: UserComponent },
-  { path:  'register/owner', component: RegisterowenerComponent},
+  { path:  'register/owner', component: RegisterOwnerComponent},
   { path:  'company/:id', component: CompanyDetailsComponent},
   { path: 'login/owner', component: OwnerloginComponent},
   { path: 'dashboard', component: DashboardComponent }

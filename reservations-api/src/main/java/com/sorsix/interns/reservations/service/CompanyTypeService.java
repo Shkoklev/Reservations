@@ -9,17 +9,17 @@ import java.util.List;
 @Service
 public class CompanyTypeService {
 
-    private final CompanyTypeRepository repository;
+    private final CompanyTypeRepository companyTypeRepository;
 
     public CompanyTypeService(CompanyTypeRepository repository) {
-        this.repository = repository;
+        this.companyTypeRepository = repository;
     }
 
     public List<CompanyType> getCompanyTypes() {
-        return repository.findAll();
+        return companyTypeRepository.findAll();
     }
 
     public CompanyType saveCompanyType(CompanyType companyType){
-        return repository.save(companyType);
+        return companyTypeRepository.save(companyType);
     }
 }

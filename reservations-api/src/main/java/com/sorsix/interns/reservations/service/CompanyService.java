@@ -10,11 +10,11 @@ import java.util.Optional;
 @Service
 public class CompanyService {
 
-    private final CompanyRepository repository;
+    private final CompanyRepository companyRepository;
     private final CompanyImageService companyImageService;
 
     public CompanyService(CompanyRepository repository,CompanyImageService companyImageService) {
-        this.repository = repository;
+        this.companyRepository = repository;
         this.companyImageService=companyImageService;
     }
 
@@ -31,32 +31,32 @@ public class CompanyService {
     }
 
     public List<Company> getAllCompanies(){
-        return repository.findAll();
+        return companyRepository.findAll();
     }
 
     public Optional<Company> getCompany(Long id) {
-        return repository.findById(id);
+        return companyRepository.findById(id);
     }
 
     public List<Company> getCompaniesByType(String companyTypeName) {
-        return repository.findByCompanyType_Name(companyTypeName);
+        return companyRepository.findByCompanyType_Name(companyTypeName);
     }
 
     public List<Company> getCompaniesByPlace(String placeName) {
-        return repository.findByPlace_Name(placeName);
+        return companyRepository.findByPlace_Name(placeName);
     }
 
     public List<Company> getCompaniesByTypeAndPlace(String companyTypeName, String placeName) {
-        return repository.findByCompanyType_NameAndPlace_Name(companyTypeName, placeName);
+        return companyRepository.findByCompanyType_NameAndPlace_Name(companyTypeName, placeName);
     }
 
     public List<Company> getCompaniesByOwnerId(Long id) {
-        return repository.findByOwner_Id(id);
+        return companyRepository.findByOwner_Id(id);
     }
 
     public Company saveCompany(Company company){
         this.companyImageService.saveImage(company.getImages());
-        return repository.save(company);
+        return companyRepository.save(company);
     }
 
 }
