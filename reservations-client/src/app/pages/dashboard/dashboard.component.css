@@ -147,3 +147,6 @@ body {
   margin-left: 40%;
   margin-top: 50%;
 }
+.reservation {
+  border: 1px solid black;
+}

@@ -18,3 +18,15 @@
     </div>
   </div>
 </div>
+
+<div class="container">
+  <div *ngFor="let reservation of reservations">
+  <div class="row">
+    <div class="col-sm-3 reservation">
+      <h4>{{reservation.user.firstName}}</h4>
+      <p>{{reservation.personCount}}</p>
+      <p>{{reservation.remark}}</p>
+    </div>
+  </div>
+  </div>
+</div>

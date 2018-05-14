@@ -23,6 +23,8 @@ import { ReservationFormComponent } from './pages/reservation-form/reservation-f
 import {OwnerService} from './services/owner.service';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import {RegisterOwnerComponent} from './pages/register-owner/register-owner.component';
+import {ReservationService} from './services/reservation.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import {RegisterOwnerComponent} from './pages/register-owner/register-owner.comp
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule.forRoot()
   ],
   providers: [
     PlacesService,
@@ -52,7 +55,8 @@ import {RegisterOwnerComponent} from './pages/register-owner/register-owner.comp
     CompanyService,
     CompanyImageService,
     UserService,
-    OwnerService
+    OwnerService,
+    ReservationService
   ],
   bootstrap: [AppComponent]
 })
