@@ -1,0 +1,38 @@
+.background {
+  background-color: gray;
+  height: 800px;
+}
+
+.header-image {
+  height: 400px;
+  background-image: url("https://media.otstatic.com/img/start_hero_images/us-hero-1380-418c7360ca592e42683bc510ba947e32.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.center {
+  width: 600px;
+  height: 200px;
+  background-color: white;
+  border-radius: 15px;
+
+  position: absolute;
+  top: 175px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+}
+
+h1 {
+  padding-top: 15px;
+  color: gray;
+  text-align: center;
+}
+
+form {
+  padding-top: 35px;
+  align-content: center;
+}
+

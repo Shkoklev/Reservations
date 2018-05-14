@@ -9,13 +9,17 @@ import {Company} from '../../models/Company';
 })
 export class HomeComponent implements OnInit {
 
+
+
   constructor() { }
 
   ngOnInit() {
 
   }
 
+  findCompany() {
 
+  }
 
 
 }

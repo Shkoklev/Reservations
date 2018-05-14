@@ -16,8 +16,8 @@ export class CompanyDetailsComponent implements OnInit {
 
   ngOnInit() {
      this.route.params.subscribe(params => {
-       let id=params['id'];
-       this.companyService.getCompanyById(id)
+       let name=params['name'];
+       this.companyService.getCompanyByName(name)
          .subscribe(response=>this.company=response);
      });
   }

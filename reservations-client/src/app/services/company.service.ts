@@ -30,20 +30,16 @@ export class CompanyService {
     return this.http.get<Company[]>(`${CompanyService.apiUrl}?place=${place}`);
   }
 
+  getCompanyByName(name: String): Observable<Company> {
+    return this.http.get<Company>();
+  }
+
   getCompanyById(id: number): Observable<Company> {
     return this.http.get<Company>(`${CompanyService.apiUrl}/${id}`);
   }
 
-  getCompaniesByTypeAndPlace(type: String, place: String): Observable<Company[]> {
-    return this.http.get<Company[]>(`${CompanyService.apiUrl}?type=${type}&place=${place}`);
-  }
-
   getAllCompanies(): Observable<Company[]> {
     return this.http.get<Company[]>(CompanyService.apiUrl);
-  }
-
-  loadCompanies() {
-
   }
 
 }
