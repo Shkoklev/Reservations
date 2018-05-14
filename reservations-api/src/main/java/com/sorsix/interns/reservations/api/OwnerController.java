@@ -43,4 +43,11 @@ public class OwnerController {
     public List<Owner> getAllOwners() {
         return ownerService.getAllOwners();
     }
+    @PostMapping("/add/company")
+    public Company saveCompany(@RequestBody Company company, Authentication authentication)
+    {
+        company.setOwner((Owner)authentication.getPrincipal());
+        return companyService.saveCompany(company);
+    }
+
 }

@@ -1,8 +1,10 @@
 package com.sorsix.interns.reservations.api;
 
 import com.sorsix.interns.reservations.model.Company;
+import com.sorsix.interns.reservations.model.Owner;
 import com.sorsix.interns.reservations.service.CompanyService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,11 +17,6 @@ public class CompanyController {
 
     public CompanyController(CompanyService companyService) {
         this.companyService = companyService;
-    }
-
-    @PostMapping
-    public Company saveCompany(@RequestBody Company company) {
-        return companyService.saveCompany(company);
     }
 
     @GetMapping
