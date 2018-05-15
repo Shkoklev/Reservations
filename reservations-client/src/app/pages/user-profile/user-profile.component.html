@@ -12,30 +12,60 @@
       <p style="font-size: 25px;"><i class="fas fa-envelope"></i> {{user.email}}</p>
     </div>
   </div>
+  <div *ngIf="success" class="alert alert-success">
+    <strong>Deleted!</strong> Your reservation has been deleted!
+  </div>
   <div class="card-footer">
-    <div class="row offset-md-3" style="margin-top: 100px">
-      <div class="col-md-4" style="margin: 15px" *ngFor="let reservation of reservations">
+    <div class="row" style="margin-top: 25px">
+      <div *ngIf="reservations.length===0">
+
+        <p class="offset-4">You have 0 reservations.</p>
+
+      </div>
+      <div class="col-md-3" style="margin: 15px" *ngFor="let reservation of reservations">
         <div class="card">
           <div class="card-header bg-info">
             <div class="row">
               <div class="col-xs-3">
-                <button style="background-color: transparent; border: none;"><i class="fas fa-trash-alt fa-2x text-danger"></i></button>
+                <button type="button" style="background-color: transparent; border: none;"
+                        data-toggle="modal" data-target="#deleting"><i class="fas fa-trash-alt fa-2x text-danger"></i>
+                </button>
+
               </div>
               <div class="col-xs-3">
                 <p style="margin-left: 10px"> Name: {{reservation.company.name}}</p>
               </div>
-              <div class="col-xs-3 offset-5">People: {{reservation.personCount}}</div>
+              <div class="col-xs-3 offset-7">People: {{reservation.personCount}}</div>
             </div>
           </div>
           <div class="card-body bg-light">
             {{reservation.remark}} {{reservation.forDate}}
           </div>
         </div>
+        <div class="modal" id="deleting">
+          <div class="modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Delete reservations</h4>
+              </div>
+              <div class="modal-body">
+                <strong>Are you sure you want to delete this reservation?</strong>
+              </div>
+              <div class="modal-footer">
+                <form (submit)="deleteReservation(reservation.id)">
+                  <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt fa-3x"></i></button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal" #closeDelete>Cancel</button>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       </div>
     </div>
-
-
-
-
   </div>
 </div>
+
+

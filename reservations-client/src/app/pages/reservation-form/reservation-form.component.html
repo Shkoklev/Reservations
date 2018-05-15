@@ -46,6 +46,9 @@
         <div *ngIf="success" class="alert alert-success">
           <strong>Success!</strong> Your reservation has been saved!
         </div>
+        <div *ngIf="overCapacity" class="alert alert-danger">
+          <strong>Sorry!</strong> We are full booked for {{date.year}}-{{date.month}}-{{date.day}}!
+        </div>
       </form>
     </div>
   </div>

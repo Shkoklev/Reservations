@@ -3,6 +3,7 @@ import {Company} from './Company';
 
 
 export class Reservation {
+  id: number
   remark: String;
   personCount: number;
   forDate: any;
