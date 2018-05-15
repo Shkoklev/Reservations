@@ -8,21 +8,27 @@
 
   <div class="center">
       <h1>Plans Tonight?</h1>
-    <form class="form-horizontal" (submit)="findCompany()">
       <div class="form-group row">
-        <div class="col-lg-8 ml-5">
+        <div class="col-lg-6 ml-4">
           <input #companyName type="text" class="form-control" name="name" id="name" (keyup)="search(companyName.value)" placeholder="Restaurant, Club or Bar">
         </div>
-        <div class="col-lg-3">
-          <button class="btn btn-outline-success">Search</button>
+        <div class="col-lg-5">
+          <form class="form-inline" (submit)="searchPlace()">
+            <select class="form-control form-control-sm" [(ngModel)]="selectedPlaceIndex" name="place" id="place">
+              <option [value]="-1">Select city</option>
+              <option *ngFor="let place of places; let i=index" [value]="i">{{place.name}}</option>
+            </select>
+            <button class="btn btn-outline-success">Search</button>
+          </form>
         </div>
       </div>
-      <div class="list-group row col-lg-8 ml-5">
+    <div id="list-container" class="row">
+      <div class="row col-lg-6 ml-4">
         <a routerLink="/company/{{company.name}}" href="#" *ngFor="let company of companies$ | async" class="list-group-item list-group-item-action">
           {{ company.name }}
         </a>
       </div>
-    </form>
+    </div>
   </div>
 
 </div>
