@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Owner} from '../../models/Owner';
 import {Reservation} from '../../models/Reservation';
 import {OwnerService} from '../../services/owner.service';
@@ -13,29 +13,30 @@ import {Company} from '../../models/Company';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private ownerService : OwnerService,
-              private router : Router,
-              private companyService: CompanyService) { }
+  constructor(private ownerService: OwnerService,
+              private router: Router,
+              private companyService: CompanyService) {
+  }
 
-  companies : Company[];
+  companies: Company[];
   owner: Owner;
   reservations: Reservation[];
+
   ngOnInit() {
-    this.ownerService.isLoggedIn()
+    this.ownerService.getLoggedOwner()
       .catch(err => {
         this.router.navigate(['/login/owner']);
         return [];
       })
-      .subscribe(own => this.owner=own);
+      .subscribe(own => this.owner = own);
 
     this.companyService.getCompaniesByOwner()
       .catch(err => {
         this.router.navigate(['/login/owner']);
-        return[];
+        return [];
       })
       .subscribe(com => this.companies = com);
   }
-
 
 
 }

@@ -28,7 +28,12 @@ export class ReservationFormComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.userService.getLoggedUser()
+      .catch(err => {
+        this.router.navigate(['/login']);
+        return [];
+      })
+      .subscribe(own => this.user = own);
   }
 
   reserve() {
