@@ -1,10 +1,11 @@
 import {User} from './User';
 import {Company} from './Company';
 
+
 export class Reservation {
   remark: String;
   personCount: number;
-  forDate: Date;
+  forDate:Date;
   user: User;
   company: Company;
 

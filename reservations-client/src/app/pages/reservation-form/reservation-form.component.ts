@@ -5,6 +5,8 @@ import {Router} from '@angular/router';
 import {User} from '../../models/User';
 import {ReservationService} from '../../services/reservation.service';
 import {Reservation} from '../../models/Reservation';
+import { ViewChild, ElementRef} from '@angular/core';
+
 
 
 @Component({
@@ -14,11 +16,13 @@ import {Reservation} from '../../models/Reservation';
 })
 export class ReservationFormComponent implements OnInit {
 
+  @ViewChild('closeDialog') closeDialog: ElementRef;
   @Input() company: Company;
   user: User;
   personCount: number;
   description: string;
   date: Date;
+  success:boolean = false;
 
 
   constructor(private reservationService: ReservationService,
@@ -32,7 +36,13 @@ export class ReservationFormComponent implements OnInit {
 
   reserve() {
     this.reservationService.reserve(this.description, this.personCount, this.date, this.company)
-      .subscribe(res => res);
+      .subscribe(res =>{
+        this.success = true;
+        setTimeout(()=> {
+            this.closeDialog.nativeElement.click();
+          },
+        1500)
+      });
   }
 
 }

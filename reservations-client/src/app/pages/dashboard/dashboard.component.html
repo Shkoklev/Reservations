@@ -1,32 +1,61 @@
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
 
 <div class="nav-side-menu">
 
-  <div *ngIf="owner?.firstName" class="brand">{{owner.firstName}}</div>
+  <div *ngIf="owner?.firstName" name="name" class="brand">{{owner.firstName}}</div>
   <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
   <div class="menu-list">
 
-    <ul id="menu-content" class="menu-content collapse out">
-        <li *ngFor="let company of companies"><i class="fas fa-map-marker fa-2x"> </i>{{company.name}}</li>
+    <ul *ngIf="companies" id="menu-content" class="menu-content collapse out" [(ngModel)]="selectedIndexCompany">
+      <li *ngFor="let company of companies; let i=index" (click)="companyClick(i)"><i
+        class="fas fa-map-marker fa-2x"></i>{{company.name}}
+      </li>
+
     </ul>
     <div class="center">
-    <a href="/admin" class="button btn btn-info add-button" type="button"><i class="fas fa-plus fa-3x"></i>
-    </a>
+      <a href="/admin" class="button btn btn-info add-button" type="button"><i class="fas fa-plus fa-3x"></i>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="row offset-7" style="margin-top: 15px">
+  <div class="form-group">
+    <div class="input-group">
+      Pick a date
+      <input class="form-control" placeholder="yyyy-mm-dd"
+             name="dp" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+          <i class="far fa-calendar-alt"></i>
+        </button>
+        <button type="button" (click)="loadReservations()">Check</button>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div *ngFor="let reservation of reservations">
-  <div class="row">
-    <div class="col-sm-3 reservation">
-      <h4>{{reservation.user.firstName}}</h4>
-      <p>{{reservation.personCount}}</p>
-      <p>{{reservation.remark}}</p>
+
+<div class="row offset-md-3" style="margin-top: 100px">
+  <div class="col-md-4" style="margin: 15px" *ngFor="let reservation of reservations">
+    <div class="card">
+      <div class="card-header bg-info">
+        <div class="row">
+          <div class="col-xs-3">
+            <i class="fas fa-plus-circle fa-2x"></i>
+          </div>
+          <div class="col-xs-3">
+            <p style="margin-left: 10px"> Name: {{reservation.user.firstName}}</p>
+          </div>
+          <div class="col-xs-3 offset-5">People: {{reservation.personCount}}</div>
+        </div>
+      </div>
+      <div class="card-body bg-light">
+        {{reservation.remark}} {{reservation.forDate}}
+      </div>
     </div>
   </div>
-  </div>
 </div>
+
