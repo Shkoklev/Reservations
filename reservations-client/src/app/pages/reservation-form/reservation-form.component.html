@@ -42,9 +42,14 @@
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-default">Reserve</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" #closeDialog>Close</button>
       </div>
+        <div *ngIf="success" class="alert alert-success">
+          <strong>Success!</strong> Your reservation has been saved!
+        </div>
       </form>
     </div>
   </div>
 </div>
+
+
