@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/user.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import 'rxjs/add/operator/catch';
 import {Observer} from 'rxjs/Observer';
 import {Observable} from 'rxjs/Observable';
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   password: string;
   labelText:string = "";
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -28,9 +28,20 @@ export class LoginComponent implements OnInit {
         if(res === false){
           this.labelText = "Bad Credentials";
         }else {
-          this.router.navigate(['/']);
+          let url = this.getRedirectUrl();
+          this.router.navigate([url]);
         }
       });
+  }
+
+  getRedirectUrl() {
+    let url;
+    this.route.queryParamMap.subscribe(params => url = params.get('redirect'));
+    if(url) {
+      return url;
+    }else {
+      return '/';
+    }
   }
 
 }

@@ -23,7 +23,7 @@ export class OwnerloginComponent implements OnInit {
         if(res === false){
           this.labelText = "Bad Credentials";
         }else {
-          this.router.navigate(['/']);
+          this.router.navigate(['/dashboard']);
         }
       });
   }

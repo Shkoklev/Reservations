@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {Company} from '../../models/Company';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../models/User';
 import {ReservationService} from '../../services/reservation.service';
 import {Reservation} from '../../models/Reservation';
@@ -19,7 +19,7 @@ export class ReservationFormComponent implements OnInit {
   @ViewChild('closeDialog') closeDialog: ElementRef;
   @Input() company: Company;
   user: User;
-  personCount: number;
+  personCount = 1;
   description: string;
   date: Date;
   success:boolean = false;
@@ -30,12 +30,11 @@ export class ReservationFormComponent implements OnInit {
               private router: Router) {
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   reserve() {
     this.reservationService.reserve(this.description, this.personCount, this.date, this.company)
+      .catch(err => this.router.navigateByUrl('/login?redirect='+this.router.url))
       .subscribe(res =>{
         this.success = true;
         setTimeout(()=> {

@@ -25,6 +25,8 @@ export class DashboardComponent implements OnInit {
   reservations: Reservation[] = [];
   selectedIndexCompany = 0;
   date;
+  total = 0;
+
 
   ngOnInit() {
     this.ownerService.getLoggedOwner()
@@ -49,10 +51,30 @@ export class DashboardComponent implements OnInit {
   loadReservations(){
     if(this.date){
       this.reservationService.companyReservationsByDate(this.companies[this.selectedIndexCompany].id, this.date)
-        .subscribe(res => this.reservations = res);
+        .subscribe(res => {
+          this.reservations = res;
+          this.total = this.calculatePersonCount();
+        });
     }
     else this.reservationService.companyReservations(this.companies[this.selectedIndexCompany].id)
-      .subscribe(res=> this.reservations=res);
+      .subscribe(res=> {
+        this.reservations=res
+        this.total = this.calculatePersonCount();
 
+      });
+  }
+
+  calculatePersonCount():number{
+    let total = 0;
+    console.log(this.date);
+    console.log(this.selectedIndexCompany);
+    if(this.date && (this.selectedIndexCompany || this.selectedIndexCompany==0)){
+      console.log("inside");
+      this.reservations
+        .forEach(obj=>{
+          total=total+obj.personCount;
+      });
+    }
+    return total;
   }
 }
