@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Company} from '../../models/Company';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {CompanyService} from '../../services/company.service';
 import {UserService} from '../../services/user.service';
+import {catchError} from 'rxjs/operators';
+import {tryCatch} from 'rxjs/util/tryCatch';
 
 @Component({
   selector: 'app-companies',
@@ -11,6 +13,7 @@ import {UserService} from '../../services/user.service';
 })
 export class CompaniesComponent implements OnInit {
 
+  company: Company;
   companies: Company[];
   typeName: String = null;
   placeName: String = null;
@@ -32,6 +35,10 @@ export class CompaniesComponent implements OnInit {
         this.companyService.getCompaniesByPlace(this.placeName)
           .subscribe(response => this.companies = response);
     });
+  }
+
+  onReserve(company: Company) {
+    this.company = company;
   }
 
 }

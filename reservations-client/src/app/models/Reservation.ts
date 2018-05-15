@@ -5,7 +5,7 @@ import {Company} from './Company';
 export class Reservation {
   remark: String;
   personCount: number;
-  forDate:Date;
+  forDate: any;
   user: User;
   company: Company;
 

@@ -13,7 +13,7 @@
         </div>
         <div class="pt-4">
           <a routerLink="/company/{{company.name}}" class="btn btn-dark" href="#">Show details</a>
-          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reservation-form">
+          <button type="button" class="btn btn-info" (click)="onReserve(company)" data-toggle="modal" data-target="#reservation-form">
             Reserve
           </button>
         </div>
