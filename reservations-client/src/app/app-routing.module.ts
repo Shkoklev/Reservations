@@ -11,6 +11,7 @@ import {ReservationFormComponent} from './pages/reservation-form/reservation-for
 import {OwnerloginComponent} from './pages/ownerlogin/ownerlogin.component';
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {RegisterOwnerComponent} from './pages/register-owner/register-owner.component';
+import {UserProfileComponent} from './pages/user-profile/user-profile.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -23,7 +24,8 @@ export const routes: Routes = [
   { path:  'register/owner', component: RegisterOwnerComponent},
   { path:  'company/:name', component: CompanyDetailsComponent},
   { path: 'login/owner', component: OwnerloginComponent},
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'profile', component: UserProfileComponent}
 ];
 
 @NgModule({

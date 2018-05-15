@@ -13,27 +13,31 @@ import java.util.List;
 @Service
 public class ReservationService {
 
-    public final ReservationRepository repository;
+    public final ReservationRepository reservationRepository;
 
     public ReservationService(ReservationRepository repository) {
-        this.repository = repository;
+        this.reservationRepository = repository;
     }
 
     public List<Reservation> findCompanyReservations(Long companyId){
-        return repository.findReservationByCompanyId(companyId);
+        return reservationRepository.findReservationByCompanyId(companyId);
     }
 
     public Reservation reserve(ReservationRequest reservation, User user){
         LocalDate localDate = LocalDate.of(reservation.forDate.year, reservation.forDate.month, reservation.forDate.day);
         Reservation r = new Reservation(reservation.remark, reservation.personCount, localDate, reservation.company);
         r.setUser(user);
-        return repository.save(r);
+        return reservationRepository.save(r);
     }
 
     public List<Reservation> findCompanyReservationsOnDate(Long companyId, String date){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-M-d");
         LocalDate localDate = LocalDate.parse(date,dtf);
-        return repository.findByCompanyIdAndForDate(companyId, localDate);
+        return reservationRepository.findByCompanyIdAndForDate(companyId, localDate);
+    }
+
+    public List<Reservation> findByUserId(String userName) {
+        return reservationRepository.findByUser_FirstName(userName);
     }
 
 }

@@ -38,4 +38,8 @@ public class ReserveController {
         return service.findCompanyReservationsOnDate(companyId,date);
     }
 
+    @GetMapping("/user/{userName}")
+    public List<Reservation> findByUserId(@PathVariable String userName) {
+        return service.findByUserId(userName);
+    }
 }

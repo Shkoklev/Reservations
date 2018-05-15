@@ -14,3 +14,13 @@ select {
 .form-inline {
   padding-right: 120px;
 }
+
+i {
+  font-size: 30px;
+  padding-right: 50px;
+  color: white;
+}
+
+i:hover {
+    color: #AAAAAA;
+}

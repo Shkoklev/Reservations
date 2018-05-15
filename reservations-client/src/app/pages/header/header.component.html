@@ -4,10 +4,19 @@
   </a>
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
-      <li *ngFor="let type of companyTypes" class="nav-item" >
+      <li *ngFor="let type of companyTypes" class="nav-item">
         <a routerLink="/companies/{{type.name}}" class="nav-link">{{type.name}}</a>
       </li>
     </ul>
-    <button routerLink="/login" class="btn btn-primary">Log in</button>
+    <button *ngIf="showLoginButton" routerLink="/login" class="btn btn-primary">Log in</button>
+    <div *ngIf="!showLoginButton" class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-user"></i>
+      </button>
+      <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" routerLink="/profile">{{user.firstName}}</a>
+        <a (click)="logoutUser()" class="dropdown-item">Logout</a>
+      </div>
+    </div>
   </div>
 </nav>

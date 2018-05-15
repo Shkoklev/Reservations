@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<div class="col-sm-8 offset-2" style="margin-top: 6%;">
+  <div *ngIf="user" class="card">
+    <div class="card-title bg-info text-center">
+      <i style="margin: 1%;" class="fas fa-user fa-2x"></i>
+      <p style="font-size: 20px;">
+        {{user.firstName}} {{user.lastName}}
+      </p>
+    </div>
+    <div class="card-body bg-white">
+      <p style="font-size: 25px;"><i class="fas fa-envelope"></i> {{user.email}}</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="row offset-md-3" style="margin-top: 100px">
+      <div class="col-md-4" style="margin: 15px" *ngFor="let reservation of reservations">
+        <div class="card">
+          <div class="card-header bg-info">
+            <div class="row">
+              <div class="col-xs-3">
+                <button style="background-color: transparent; border: none;"><i class="fas fa-trash-alt fa-2x text-danger"></i></button>
+              </div>
+              <div class="col-xs-3">
+                <p style="margin-left: 10px"> Name: {{reservation.company.name}}</p>
+              </div>
+              <div class="col-xs-3 offset-5">People: {{reservation.personCount}}</div>
+            </div>
+          </div>
+          <div class="card-body bg-light">
+            {{reservation.remark}} {{reservation.forDate}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+</div>

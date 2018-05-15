@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { Reservation} from '../models/Reservation';
+import {Reservation} from '../models/Reservation';
 import {Company} from '../models/Company';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class ReservationService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
 
   reserve(description: string, personCount: number, date: Date, company: Company) {
@@ -15,10 +16,16 @@ export class ReservationService {
     console.log(reservation);
     return this.http.post('/api/reserve', reservation);
   }
-  companyReservations(companyId: number):Observable<Reservation[]> {
-    return this.http.get<Reservation[]>('/api/reserve/'+companyId);
+
+  companyReservations(companyId: number): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>('/api/reserve/' + companyId);
   }
-  companyReservationsByDate(companyId: number, date:any):Observable<Reservation[]>{
-    return this.http.get<Reservation[]>('/api/reserve/'+companyId+'/'+date.year+'-'+date.month+'-'+date.day);
-}
+
+  companyReservationsByDate(companyId: number, date: any): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>('/api/reserve/' + companyId + '/' + date.year + '-' + date.month + '-' + date.day);
+  }
+
+  userReservations(userName: String): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(`/api/reserve/user/${userName}`);
+  }
 }
