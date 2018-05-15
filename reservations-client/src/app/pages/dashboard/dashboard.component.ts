@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
   owner: Owner;
   reservations: Reservation[] = [];
   selectedIndexCompany = 0;
-  date: Date;
+  date;
 
   ngOnInit() {
     this.ownerService.getLoggedOwner()

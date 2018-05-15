@@ -26,7 +26,7 @@
     <div class="input-group">
       Pick a date
       <input class="form-control" placeholder="yyyy-mm-dd"
-             name="dp" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker">
+              name="dp" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker" ngControlDefault>
       <div class="input-group-append">
         <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
           <i class="far fa-calendar-alt"></i>
@@ -58,4 +58,5 @@
     </div>
   </div>
 </div>
+
 

@@ -18,7 +18,7 @@ export class ReservationService {
   companyReservations(companyId: number):Observable<Reservation[]> {
     return this.http.get<Reservation[]>('/api/reserve/'+companyId);
   }
-  companyReservationsByDate(companyId: number, date: Date):Observable<Reservation[]>{
+  companyReservationsByDate(companyId: number, date:any):Observable<Reservation[]>{
     return this.http.get<Reservation[]>('/api/reserve/'+companyId+'/'+date.year+'-'+date.month+'-'+date.day);
 }
 }
