@@ -1,12 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {CompanyService} from '../../services/company.service';
 import {Company} from '../../models/Company';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
 import {
   debounceTime, distinctUntilChanged, switchMap
 } from 'rxjs/operators';
+import {Place} from '../../models/Place';
+import {PlacesService} from '../../services/places.service';
 
 
 @Component({
@@ -18,11 +20,16 @@ export class HomeComponent implements OnInit {
 
   searchTerms = new Subject<string>();
   companies$: Observable<Company[]>;
+  selectedPlaceIndex = -1;
+  places: Place[];
 
-  constructor(private router: Router, private companyService: CompanyService) {
+  constructor(private router: Router, private companyService: CompanyService,
+              private route: ActivatedRoute, private placesService: PlacesService) {
   }
 
   ngOnInit() {
+    this.placesService.getPlaces()
+      .subscribe(places => this.places = places);
     this.companies$ = this.searchTerms.pipe(
       debounceTime(300),
       distinctUntilChanged(),
@@ -34,14 +41,18 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  findCompany() {
-    //   this.router.navigateByUrl(`/company/${this.companyName}`);
-  }
-
   search(query: string) {
     this.searchTerms.next(query);
 
   }
 
+  searchPlace() {
+    if(this.selectedPlaceIndex == -1)
+    {
+      return;
+    }
+    let url = `/companies?place=${this.places[this.selectedPlaceIndex].name}`;
+    this.router.navigateByUrl(url);
+  }
 
 }
