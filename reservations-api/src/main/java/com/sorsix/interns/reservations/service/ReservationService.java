@@ -2,68 +2,65 @@ package com.sorsix.interns.reservations.service;
 
 import com.sorsix.interns.reservations.model.Reservation;
 import com.sorsix.interns.reservations.model.User;
+import com.sorsix.interns.reservations.model.requests.DateRequest;
 import com.sorsix.interns.reservations.model.requests.ReservationRequest;
-import com.sorsix.interns.reservations.repository.CompanyRepository;
 import com.sorsix.interns.reservations.repository.ReservationRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReservationService {
 
-    public final ReservationRepository reservationRepository;
-    public final CompanyRepository companyRepository;
+    private final ReservationRepository repository;
 
-    public ReservationService(ReservationRepository repository, CompanyRepository companyRepository) {
-        this.reservationRepository = repository;
-        this.companyRepository = companyRepository;
+    public ReservationService(ReservationRepository repository) {
+        this.repository = repository;
     }
 
-    public List<Reservation> findCompanyReservations(Long companyId){
-        return reservationRepository.findReservationByCompanyId(companyId);
+    public List<Reservation> getCompanyReservations(Long companyId){
+        return repository.findByCompany_Id(companyId);
     }
 
-    public ResponseEntity<Reservation> reserve(ReservationRequest reservation, User user){
-
-        if(reservation.company.getCapacity()>countReservations(reservation.company.getId(),reservation)){
-        LocalDate localDate = LocalDate.of(reservation.forDate.year, reservation.forDate.month, reservation.forDate.day);
-        Reservation r = new Reservation(reservation.remark, reservation.personCount, localDate, reservation.company);
-        r.setUser(user);
-        return ResponseEntity.ok(reservationRepository.save(r));
-        }
-        else {
-            return ResponseEntity.status(HttpStatus.LOCKED).build();
-        }
+    public List<Reservation> getCompanyReservationsOnDate(Long companyId, DateRequest dateRequest) {
+        LocalDate localDate = LocalDate.of(dateRequest.year, dateRequest.month, dateRequest.day);
+        return repository.findByCompany_IdAndForDate(companyId, localDate);
     }
 
-    public List<Reservation> findCompanyReservationsOnDate(Long companyId, String date){
+    public List<Reservation> getCompanyReservationsOnDate(Long companyId, String date){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-M-d");
         LocalDate localDate = LocalDate.parse(date,dtf);
-        return reservationRepository.findByCompanyIdAndForDate(companyId, localDate);
+        return repository.findByCompany_IdAndForDate(companyId, localDate);
     }
 
-    public List<Reservation> findByUserId(Long userId) {
-        return reservationRepository.findByUserId(userId);
+    public List<Reservation> getUserReservations(Long userId) {
+        return repository.findByUser_Id(userId);
     }
 
-    public void deleteById(Long id){
-        reservationRepository.deleteById(id);
+    public void deleteReservationById(Long id){
+        repository.deleteById(id);
     }
 
-    public Integer countReservations(Long companyId, ReservationRequest reservation){
-        List<Reservation> reservations = findCompanyReservations(companyId);
+    public Optional<Reservation> reserve(ReservationRequest reservation, User user) {
+        List<Reservation> reservations = getCompanyReservationsOnDate(reservation.company.getId(), reservation.forDate);
+        int takenSeats = countTakenSeats(reservations);
+        if (reservation.personCount + takenSeats <= reservation.company.getCapacity()) {
+            LocalDate date = LocalDate.of(reservation.forDate.year, reservation.forDate.month, reservation.forDate.day);
+            Reservation r = new Reservation(reservation.remark, reservation.personCount, date, reservation.company);
+            r.setUser(user);
+            return Optional.of(repository.save(r));
+        } else {
+            return Optional.empty();
+        }
+    }
+
+    private int countTakenSeats(List<Reservation> reservations) {
         return reservations.stream()
-                            .filter(res -> res.getForDate()
-                                    .isEqual(LocalDate.of(reservation.forDate.year,
-                                                        reservation.forDate.month,
-                                                        reservation.forDate.day)))
-                            .mapToInt(it-> it.getPersonCount())
-                            .sum();
+                .mapToInt(Reservation::getPersonCount)
+                .sum();
     }
 
 }

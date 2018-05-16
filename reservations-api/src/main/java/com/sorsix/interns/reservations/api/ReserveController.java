@@ -4,9 +4,11 @@ import com.sorsix.interns.reservations.model.Reservation;
 import com.sorsix.interns.reservations.model.User;
 import com.sorsix.interns.reservations.model.requests.ReservationRequest;
 import com.sorsix.interns.reservations.service.ReservationService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 
@@ -22,27 +24,29 @@ public class ReserveController {
 
     @PostMapping
     public ResponseEntity<Reservation> reserve(@RequestBody ReservationRequest reservation, Authentication authentication){
-        return service.reserve(reservation, (User)authentication.getPrincipal());
+        return service.reserve(reservation, (User)authentication.getPrincipal())
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.status(HttpStatus.LOCKED).build());
     }
 
     @GetMapping("/{companyId}")
-    public List<Reservation> findCompanyReservations(@PathVariable Long companyId){
-        return service.findCompanyReservations(companyId);
+    public List<Reservation> getCompanyReservations(@PathVariable Long companyId){
+        return service.getCompanyReservations(companyId);
     }
 
     @GetMapping("/{companyId}/{date}")
-    public List<Reservation> findCompanyReservationsOnDate(@PathVariable Long companyId, @PathVariable String date){
-        return service.findCompanyReservationsOnDate(companyId,date);
+    public List<Reservation> getCompanyReservationsOnDate(@PathVariable Long companyId, @PathVariable String date){
+        return service.getCompanyReservationsOnDate(companyId,date);
     }
 
     @GetMapping("/user/{userId}")
-    public List<Reservation> findByUserId(@PathVariable Long userId) {
-    return service.findByUserId(userId);
+    public List<Reservation> getUserReservations(@PathVariable Long userId) {
+        return service.getUserReservations(userId);
     }
 
     @DeleteMapping("/delete/{reservationId}")
     public void deleteReservationById(@PathVariable Long reservationId){
-        service.deleteById(reservationId);
+        service.deleteReservationById(reservationId);
     }
 }
 
