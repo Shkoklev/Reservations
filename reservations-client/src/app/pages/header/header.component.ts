@@ -6,6 +6,7 @@ import {Place} from '../../models/Place';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
 import {User} from '../../models/User';
+import {OwnerService} from '../../services/owner.service';
 
 @Component({
   selector: 'app-header',
@@ -15,31 +16,39 @@ import {User} from '../../models/User';
 export class HeaderComponent implements OnInit {
 
   companyTypes: CompanyType[];
-  showLoginButton: Boolean = true;
+  loggedAsUser: Boolean = false;
+  loggedAsOwner: Boolean = false;
   user: User;
 
   constructor(private companyTypesService: CompanyTypesService, private userService: UserService,
-              private router: Router) {
+              private router: Router, private ownerService: OwnerService) {
   }
 
   ngOnInit() {
     this.companyTypesService.getCompanyTypes()
       .subscribe(types => this.companyTypes = types);
     this.userService.getLoggedUser()
-      .catch(err => {
-        this.showLoginButton = true;
-        return [];
-      })
       .subscribe(res => {
+        this.loggedAsUser=true;
+        this.loggedAsOwner=false
         this.user = res;
-        this.showLoginButton = false;
+      },err => {
+          this.loggedAsUser = false;
+          this.user=null;
       });
+
+    this.ownerService.getLoggedOwner()
+      .subscribe(res=>{
+        this.loggedAsOwner = true;
+        this.loggedAsUser=false
+      },err=>{
+        this.loggedAsOwner=false;
+      })
   }
 
   logoutUser() {
-    this.userService.logoutUser().subscribe(res=> {
+    this.userService.logoutUser().subscribe(res => {
       this.router.navigate(['home']);
-      this.showLoginButton = true;
     });
 
   }
