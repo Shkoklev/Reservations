@@ -16,10 +16,10 @@ export class CompanyService {
   }
 
   saveCompany(name: string, address: string, description: string, capacity: number,
-              place: Place, companyType: CompanyType, companyImages: CompanyImage[], workingDaysMask: string) {
+              place: Place, companyType: CompanyType,
+              companyImages: CompanyImage[], workingDaysMask: string):Observable<Company> {
     let company = new Company(name, address, description, capacity, place, companyType, companyImages, workingDaysMask);
-    this.http.post<Company>('/api/owner/add/company', company)
-      .subscribe(p => p);
+    return this.http.post<Company>('/api/owner/add/company', company);
   }
 
   getCompaniesByType(type: String): Observable<Company[]> {

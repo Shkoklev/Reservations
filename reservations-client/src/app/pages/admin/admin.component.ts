@@ -6,6 +6,8 @@ import {CompanyTypesService} from '../../services/company-types.service';
 import {CompanyType} from '../../models/CompanyType';
 import {CompanyService} from '../../services/company.service';
 import {CompanyImage} from '../../models/CompanyImage';
+import {routes} from '../../app-routing.module';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -25,9 +27,13 @@ export class AdminComponent implements OnInit {
   daysSelected = [false, false, false, false, false, false, false];
   currentUrl = '';
   images: CompanyImage[]=[];
+  success: boolean = false;
+  notSuccess: boolean = false;
 
-  constructor(private placesService: PlacesService, private companyTypesService: CompanyTypesService,
-              private companyService: CompanyService) {
+  constructor(private placesService: PlacesService,
+              private companyTypesService: CompanyTypesService,
+              private companyService: CompanyService,
+              private route: Router) {
   }
 
   ngOnInit() {
@@ -51,9 +57,17 @@ export class AdminComponent implements OnInit {
     }).join('');
 
     this.companyService.saveCompany(this.name, this.address, this.description, this.capacity,
-      this.places[this.selectedPlaceIndex], this.companyTypes[this.selectedCompanyTypeIndex], this.images, workingDaysMask);
+      this.places[this.selectedPlaceIndex], this.companyTypes[this.selectedCompanyTypeIndex], this.images, workingDaysMask)
+      .catch(err => {
+        this.notSuccess = true;
+        setTimeout(this.notSuccess = false,2000);
+        return err;
+      })
+      .subscribe(res => {
+          this.success = true
+            setTimeout(this.success = false, 1000);
+          this.route.navigateByUrl('/dashboard');
+      });
   }
-  see () {
 
-  }
 }
