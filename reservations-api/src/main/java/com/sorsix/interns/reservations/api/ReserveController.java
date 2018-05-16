@@ -2,13 +2,11 @@ package com.sorsix.interns.reservations.api;
 
 import com.sorsix.interns.reservations.model.Reservation;
 import com.sorsix.interns.reservations.model.User;
-import com.sorsix.interns.reservations.model.requests.DateRequest;
 import com.sorsix.interns.reservations.model.requests.ReservationRequest;
 import com.sorsix.interns.reservations.service.ReservationService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
 import java.util.List;
 
 
@@ -22,9 +20,8 @@ public class ReserveController {
         this.service = service;
     }
 
-
     @PostMapping
-    public Reservation reserve(@RequestBody ReservationRequest reservation, Authentication authentication){
+    public ResponseEntity<Reservation> reserve(@RequestBody ReservationRequest reservation, Authentication authentication){
         return service.reserve(reservation, (User)authentication.getPrincipal());
     }
 
@@ -42,4 +39,10 @@ public class ReserveController {
     public List<Reservation> findByUserId(@PathVariable String userName) {
         return service.findByUserId(userName);
     }
+
+    @DeleteMapping("/delete/{reservationId}")
+    public void deleteReservationById(@PathVariable Long reservationId){
+        service.deleteById(reservationId);
+    }
 }
+

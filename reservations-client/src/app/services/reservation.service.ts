@@ -11,10 +11,10 @@ export class ReservationService {
   }
 
 
-  reserve(description: string, personCount: number, date: Date, company: Company) {
+  reserve(description: string, personCount: number, date: Date, company: Company):Observable<Reservation> {
     let reservation = new Reservation(description, personCount, date, company);
     console.log(reservation);
-    return this.http.post('/api/reserve', reservation);
+    return this.http.post<Reservation>('/api/reserve', reservation);
   }
 
   companyReservations(companyId: number): Observable<Reservation[]> {
@@ -27,5 +27,9 @@ export class ReservationService {
 
   userReservations(userName: String): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(`/api/reserve/user/${userName}`);
+  }
+
+  deleteReservation(reservationId:number){
+    return this.http.delete('/api/reserve/delete/'+reservationId);
   }
 }
