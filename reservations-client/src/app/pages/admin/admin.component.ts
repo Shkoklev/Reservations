@@ -26,7 +26,7 @@ export class AdminComponent implements OnInit {
   selectedCompanyTypeIndex = 0;
   daysSelected = [false, false, false, false, false, false, false];
   currentUrl = '';
-  images: CompanyImage[]=[];
+  images: CompanyImage[] = [];
   success: boolean = false;
   notSuccess: boolean = false;
 
@@ -50,8 +50,8 @@ export class AdminComponent implements OnInit {
   }
 
   onSubmit() {
-    let workingDaysMask = this.daysSelected.map(day =>{
-      if(day)
+    let workingDaysMask = this.daysSelected.map(day => {
+      if (day)
         return '1';
       else return '0';
     }).join('');
@@ -60,13 +60,13 @@ export class AdminComponent implements OnInit {
       this.places[this.selectedPlaceIndex], this.companyTypes[this.selectedCompanyTypeIndex], this.images, workingDaysMask)
       .catch(err => {
         this.notSuccess = true;
-        setTimeout(this.notSuccess = false,2000);
+        setTimeout(this.notSuccess = false, 2000);
         return err;
       })
       .subscribe(res => {
-          this.success = true
-            setTimeout(this.success = false, 1000);
-          this.route.navigateByUrl('/dashboard');
+        this.success = true;
+        setTimeout(this.success = false, 1000);
+        this.route.navigateByUrl('/dashboard');
       });
   }
 

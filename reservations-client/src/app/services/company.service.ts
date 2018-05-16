@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {Place} from '../models/Place';
 import {CompanyType} from '../models/CompanyType';
 import {Company} from '../models/Company';
-import {CompanyImageService} from './company-image.service';
 import {Observable} from 'rxjs/Observable';
 import {CompanyImage} from '../models/CompanyImage';
 
@@ -12,7 +11,7 @@ export class CompanyService {
 
   static apiUrl = '/api/companies';
 
-  constructor(private http: HttpClient, private imageService: CompanyImageService) {
+  constructor(private http: HttpClient) {
   }
 
   saveCompany(name: string, address: string, description: string, capacity: number,
@@ -34,13 +33,6 @@ export class CompanyService {
     return this.http.get<Company>(`${CompanyService.apiUrl}/name/${name}`);
   }
 
-  getCompanyById(id: number): Observable<Company> {
-    return this.http.get<Company>(`${CompanyService.apiUrl}/${id}`);
-  }
-
-  getAllCompanies(): Observable<Company[]> {
-    return this.http.get<Company[]>(CompanyService.apiUrl);
-  }
   getCompaniesByOwner() : Observable<Company[]> {
     return this.http.get<Company[]>('/api/owner/companies');
   }

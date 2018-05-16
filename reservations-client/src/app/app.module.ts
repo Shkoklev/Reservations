@@ -10,7 +10,6 @@ import {FormsModule} from '@angular/forms';
 import {CompanyTypesService} from './services/company-types.service';
 import {HttpClientModule} from '@angular/common/http';
 import { CompanyService } from './services/company.service';
-import { CompanyImageService } from './services/company-image.service';
 import { HeaderComponent } from './pages/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CompaniesComponent } from './pages/companies/companies.component';
@@ -57,7 +56,6 @@ import { FooterComponent } from './pages/footer/footer.component';
     PlacesService,
     CompanyTypesService,
     CompanyService,
-    CompanyImageService,
     UserService,
     OwnerService,
     ReservationService
