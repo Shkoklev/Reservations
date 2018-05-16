@@ -1,13 +1,10 @@
 package com.sorsix.interns.reservations.api;
 
 import com.sorsix.interns.reservations.model.Company;
-import com.sorsix.interns.reservations.model.Owner;
 import com.sorsix.interns.reservations.service.CompanyService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.ws.Response;
 import java.util.List;
 
 @RestController
@@ -31,8 +28,8 @@ public class CompanyController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Company> getCompany(@PathVariable Long id) {
-        return companyService.getCompany(id)
+    public ResponseEntity<Company> getCompanyById(@PathVariable Long id) {
+        return companyService.getCompanyById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }

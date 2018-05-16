@@ -43,8 +43,4 @@ public class OwnerService implements UserDetailsService {
         return ownerRepository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
     }
-
-    public List<Owner> getAllOwners() {
-        return ownerRepository.findAll();
-    }
 }
