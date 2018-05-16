@@ -42,7 +42,7 @@
             {{reservation.remark}} {{reservation.forDate}}
           </div>
         </div>
-        <div class="modal" id="deleting">
+        <div class="modal offset-5 modal-sm" id="deleting">
           <div class="modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
@@ -53,7 +53,7 @@
               </div>
               <div class="modal-footer">
                 <form (submit)="deleteReservation(reservation.id)">
-                  <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt fa-3x"></i></button>
+                  <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt fa-2x"></i></button>
                   <button type="button" class="btn btn-default" data-dismiss="modal" #closeDelete>Cancel</button>
                 </form>
 

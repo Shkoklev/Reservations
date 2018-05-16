@@ -13,6 +13,6 @@ import java.util.List;
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
       List<Reservation> findReservationByCompanyId(Long companyId);
       List<Reservation> findByCompanyIdAndForDate (Long companyId, LocalDate date);
-      List<Reservation> findByUser_FirstName(String userFirstName);
+      List<Reservation> findByUserId (Long userId);
 
 }
