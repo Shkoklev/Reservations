@@ -24,3 +24,7 @@ i {
 i:hover {
     color: #AAAAAA;
 }
+
+button {
+  margin: 8px;
+}

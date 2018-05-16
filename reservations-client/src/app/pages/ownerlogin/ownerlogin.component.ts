@@ -11,14 +11,14 @@ import {OwnerService} from '../../services/owner.service';
 export class OwnerloginComponent implements OnInit {
 
   constructor(private ownerService: OwnerService, private router: Router) { }
-  username: string;
+  email: string;
   password: string;
   labelText:string = "";
   ngOnInit() {
   }
 
   onLogInClick() {
-    this.ownerService.logInOwner(this.username, this.password)
+    this.ownerService.logInOwner(this.email, this.password)
       .subscribe(res =>{
         if(res === false){
           this.labelText = "Bad Credentials";

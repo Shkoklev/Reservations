@@ -8,6 +8,7 @@
         <a routerLink="/companies/{{type.name}}" class="nav-link">{{type.name}}</a>
       </li>
     </ul>
+    <button *ngIf="showLoginButton" routerLink="/register" class="btn btn-primary">Sign up</button>
     <button *ngIf="showLoginButton" routerLink="/login" class="btn btn-primary">Log in</button>
     <div *ngIf="!showLoginButton" class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

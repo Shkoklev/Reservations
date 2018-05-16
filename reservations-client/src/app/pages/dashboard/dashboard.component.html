@@ -24,6 +24,7 @@
       <p *ngIf="companies[selectedIndexCompany]?.name && date"  class="text-info">Total reservations in {{companies[selectedIndexCompany].name}}
         for {{date.day}}.{{date.month}}.{{date.year}}:{{total}}</p>
     </div>
+    <button  style="margin-top: 10%" type="button" (click)="logoutUser()"  class="btn btn-primary">Log out</button>
 
   </div>
 </div>

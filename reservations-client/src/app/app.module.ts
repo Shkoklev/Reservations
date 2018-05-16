@@ -26,6 +26,7 @@ import {RegisterOwnerComponent} from './pages/register-owner/register-owner.comp
 import {ReservationService} from './services/reservation.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { FooterComponent } from './pages/footer/footer.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     CompanyDetailsComponent,
     ReservationFormComponent,
     DashboardComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
