@@ -5,7 +5,6 @@ import com.sorsix.interns.reservations.model.User;
 import com.sorsix.interns.reservations.model.requests.ReservationRequest;
 import com.sorsix.interns.reservations.repository.CompanyRepository;
 import com.sorsix.interns.reservations.repository.ReservationRepository;
-import org.apache.tomcat.jni.Local;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

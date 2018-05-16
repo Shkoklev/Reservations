@@ -37,7 +37,7 @@ public class ReserveController {
 
     @GetMapping("/user/{userId}")
     public List<Reservation> findByUserId(@PathVariable Long userId) {
-        return service.findByUserId(userId);
+    return service.findByUserId(userId);
     }
 
     @DeleteMapping("/delete/{reservationId}")

@@ -77,4 +77,10 @@ export class DashboardComponent implements OnInit {
     }
     return total;
   }
+  logoutUser() {
+    this.ownerService.logoutUser().subscribe(res=> {
+      this.router.navigate(['home']);
+    });
+
+  }
 }

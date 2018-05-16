@@ -31,4 +31,7 @@ export class OwnerService {
     return this.http.get<Owner>('/api/owner/loggedOwner');
 
   }
+  logoutUser(): Observable<any> {
+    return this.http.get<any>('/api/logout');
+  }
 }
