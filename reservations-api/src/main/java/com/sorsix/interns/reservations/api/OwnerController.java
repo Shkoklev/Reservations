@@ -29,7 +29,7 @@ public class OwnerController {
     }
 
     @GetMapping("/companies")
-    public List<Company> getCompanies(Authentication authentication) {
+    public List<Company> getOwnerCompanies(Authentication authentication) {
         Owner loggedOwner = (Owner)authentication.getPrincipal();
         return companyService.getCompaniesByOwnerId(loggedOwner.getId());
     }
@@ -39,10 +39,6 @@ public class OwnerController {
         return (Owner)authentication.getPrincipal();
     }
 
-    @GetMapping
-    public List<Owner> getAllOwners() {
-        return ownerService.getAllOwners();
-    }
 
     @PostMapping("/add/company")
     public Company saveCompany(@RequestBody Company company, Authentication authentication)

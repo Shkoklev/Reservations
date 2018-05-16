@@ -28,11 +28,6 @@ public class UserController {
                 userRequest.birthDate, userRequest.place);
     }
 
-    @GetMapping
-    public List<User> getUsers() {
-         return userService.getAllUsers();
-    }
-
     @GetMapping("/loggedUser")
     public User getLoggedUser(Authentication authentication) {
         return (User)authentication.getPrincipal();

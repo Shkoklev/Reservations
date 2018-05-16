@@ -39,7 +39,7 @@ public class CompanyService {
         return companyRepository.findAll();
     }
 
-    public Optional<Company> getCompany(Long id) {
+    public Optional<Company> getCompanyById(Long id) {
         return companyRepository.findById(id);
     }
 
