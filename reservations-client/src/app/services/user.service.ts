@@ -64,7 +64,7 @@ export class UserService {
   }
 
   logoutUser(): Observable<any> {
-    return this.http.get('/api/logout');
+    return this.http.get<any>('/api/logout');
   }
 
 }

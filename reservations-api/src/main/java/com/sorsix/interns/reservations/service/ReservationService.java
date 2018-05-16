@@ -48,8 +48,8 @@ public class ReservationService {
         return reservationRepository.findByCompanyIdAndForDate(companyId, localDate);
     }
 
-    public List<Reservation> findByUserId(String userName) {
-        return reservationRepository.findByUser_FirstName(userName);
+    public List<Reservation> findByUserId(Long userId) {
+        return reservationRepository.findByUserId(userId);
     }
 
     public void deleteById(Long id){

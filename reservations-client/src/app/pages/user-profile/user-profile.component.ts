@@ -24,13 +24,13 @@ export class UserProfileComponent implements OnInit {
     this.userService.getLoggedUser()
       .subscribe(res=> {
         this.user=res;
-        this.reservationService.userReservations(this.user.firstName)
+        this.reservationService.userReservations(this.user.id)
           .subscribe(res=>this.reservations=res);
       });
   }
 
   loadReservations(){
-    this.reservationService.userReservations(this.user.firstName)
+    this.reservationService.userReservations(this.user.id)
       .subscribe(res=>this.reservations=res);
   }
 

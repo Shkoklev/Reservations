@@ -35,9 +35,9 @@ public class ReserveController {
         return service.findCompanyReservationsOnDate(companyId,date);
     }
 
-    @GetMapping("/user/{userName}")
-    public List<Reservation> findByUserId(@PathVariable String userName) {
-        return service.findByUserId(userName);
+    @GetMapping("/user/{userId}")
+    public List<Reservation> findByUserId(@PathVariable Long userId) {
+        return service.findByUserId(userId);
     }
 
     @DeleteMapping("/delete/{reservationId}")

@@ -25,8 +25,8 @@ export class ReservationService {
     return this.http.get<Reservation[]>('/api/reserve/' + companyId + '/' + date.year + '-' + date.month + '-' + date.day);
   }
 
-  userReservations(userName: String): Observable<Reservation[]> {
-    return this.http.get<Reservation[]>(`/api/reserve/user/${userName}`);
+  userReservations(userId: number): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(`/api/reserve/user/${userId}`);
   }
 
   deleteReservation(reservationId:number){
