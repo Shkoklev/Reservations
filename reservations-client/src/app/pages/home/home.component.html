@@ -20,9 +20,9 @@
             </select>
             <button class="btn btn-outline-success">Search</button>
           </form>
-        </div>  
+        </div>
       </div>
-    <div id="list-container" class="row">
+    <div *ngIf="companies$" id="list-container" class="row">
       <div class="row col-lg-6 ml-4">
         <a routerLink="/company/{{company.name}}" *ngFor="let company of companies$ | async" class="list-group-item list-group-item-action">
           {{ company.name }}

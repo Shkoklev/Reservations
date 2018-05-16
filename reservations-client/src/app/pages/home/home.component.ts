@@ -34,8 +34,10 @@ export class HomeComponent implements OnInit {
       debounceTime(300),
       distinctUntilChanged(),
       switchMap((query: string) => {
-        if (query.length === 0 || query.split(' ').length >= 2)
-          return [];
+        if (query.length === 0 || query.charAt(0)==" ")
+        {
+          query=null;
+        }
         return this.companyService.getCompaniesByQuery(query);
       }),
     );
