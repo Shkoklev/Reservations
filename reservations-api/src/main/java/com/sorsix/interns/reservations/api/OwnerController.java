@@ -5,7 +5,6 @@ import com.sorsix.interns.reservations.model.Owner;
 import com.sorsix.interns.reservations.model.requests.OwnerRequest;
 import com.sorsix.interns.reservations.service.CompanyService;
 import com.sorsix.interns.reservations.service.OwnerService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
