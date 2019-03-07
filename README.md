@@ -5,7 +5,7 @@ with their friends.
 ## API ##
 Using Spring Boot we have built a RESTful API to provide our client with needed content. 
 All data in our database is stored using Spiring JPA with PostgreSQL. 
-All tables are generated automaticly using ``spring.jpa.generate-ddl=true``.
+All tables are generated automatically using ``spring.jpa.generate-ddl=true``.
 This app has two type of users: 
 - Owner
 - User
